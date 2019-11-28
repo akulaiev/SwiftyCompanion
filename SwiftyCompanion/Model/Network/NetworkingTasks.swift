@@ -11,14 +11,13 @@ import Foundation
 class NetworkingTasks {
     
     //Static function to perform all kinds of networking requests
-    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(requestMethod: String, udacityApi: Bool, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(requestMethod: String, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = requestMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         if let body = body {
             request.httpBody = try! JSONEncoder().encode(body)
         }
-        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 DispatchQueue.main.async {
@@ -28,15 +27,7 @@ class NetworkingTasks {
             }
             do {
                 let decoder = JSONDecoder()
-                var newData: Data
-                if !udacityApi {
-                    newData = data
-                }
-                else {
-                    let range = 5..<data.count
-                    newData = data.subdata(in: range)
-                }
-                let response = try decoder.decode(ResponseType.self, from: newData)
+                let response = try decoder.decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(response, nil)
                 }

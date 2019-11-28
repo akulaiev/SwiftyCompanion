@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */; };
+		2DDF9A4D238EDC11008570CA /* FortyTwoResponseStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */; };
 		A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */; };
 		A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FDE238D246C00DC7968 /* Main.storyboard */; };
 		A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* UdacityFinal.xcdatamodeld */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoRequestStructs.swift; sourceTree = "<group>"; };
+		2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoResponseStructs.swift; sourceTree = "<group>"; };
 		A0FF7FD7238D246C00DC7968 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0FF7FDF238D246C00DC7968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 			children = (
 				A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */,
 				A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift */,
+				2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */,
+				2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -192,8 +198,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DDF9A4D238EDC11008570CA /* FortyTwoResponseStructs.swift in Sources */,
 				A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */,
 				A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */,
+				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */,
 				A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift in Sources */,
