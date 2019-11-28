@@ -16,7 +16,10 @@
 		A0FF7FE8238D246D00DC7968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FE6238D246D00DC7968 /* LaunchScreen.storyboard */; };
 		A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */; };
 		A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */; };
-		A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift */; };
+		A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClient.swift */; };
+		A0FF7FFF23906B4300DC7968 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FFD23906B4300DC7968 /* CustomTableViewCell.swift */; };
+		A0FF800023906B4300DC7968 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */; };
+		A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800123906D6300DC7968 /* UserInfoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +34,10 @@
 		A0FF7FE9238D246D00DC7968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTasks.swift; sourceTree = "<group>"; };
 		A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoAPIClientAPIClient.swift; sourceTree = "<group>"; };
+		A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoAPIClient.swift; sourceTree = "<group>"; };
+		A0FF7FFD23906B4300DC7968 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		A0FF800123906D6300DC7968 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +72,7 @@
 			children = (
 				A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */,
 				A0FF7FE9238D246D00DC7968 /* Info.plist */,
-				A0FF7FF4238D256500DC7968 /* Views */,
+				A0FF7FF4238D256500DC7968 /* View */,
 				A0FF7FF2238D253F00DC7968 /* Model */,
 				A0FF7FF1238D251D00DC7968 /* View Controllers */,
 				A0FF7FEF238D24F800DC7968 /* Storyboards */,
@@ -96,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */,
+				A0FF800123906D6300DC7968 /* UserInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -113,18 +120,20 @@
 			isa = PBXGroup;
 			children = (
 				A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */,
-				A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift */,
+				A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClient.swift */,
 				2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */,
 				2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		A0FF7FF4238D256500DC7968 /* Views */ = {
+		A0FF7FF4238D256500DC7968 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A0FF7FFD23906B4300DC7968 /* CustomTableViewCell.swift */,
+				A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +196,7 @@
 			files = (
 				A0FF7FE8238D246D00DC7968 /* LaunchScreen.storyboard in Resources */,
 				A0FF7FE5238D246D00DC7968 /* Assets.xcassets in Resources */,
+				A0FF800023906B4300DC7968 /* CustomTableViewCell.xib in Resources */,
 				A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,11 +210,13 @@
 			files = (
 				2DDF9A4D238EDC11008570CA /* FortyTwoResponseStructs.swift in Sources */,
 				A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */,
+				A0FF7FFF23906B4300DC7968 /* CustomTableViewCell.swift in Sources */,
 				A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */,
+				A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */,
-				A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClientAPIClient.swift in Sources */,
+				A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
