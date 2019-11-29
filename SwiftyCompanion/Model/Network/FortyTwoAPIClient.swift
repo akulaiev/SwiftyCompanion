@@ -22,16 +22,22 @@ class FortyTwoAPIClient {
         static let baseString = "https://api.intra.42.fr"
         
         case token
+        case me
 
         var stringValue: String {
             switch self {
             case .token: return Endpoints.baseString + "/oauth/token"
+            case .me: return Endpoints.baseString + "/v2/me"
             }
         }
 
         var url: URL {
             return URL(string: stringValue)!
         }
+    }
+    
+    class func getMyInfo() {
+        
     }
     
     class func getAccessToken() {

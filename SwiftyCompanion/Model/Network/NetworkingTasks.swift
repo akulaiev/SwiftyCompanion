@@ -15,6 +15,7 @@ class NetworkingTasks {
         var request = URLRequest(url: url)
         request.httpMethod = requestMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer " + FortyTwoAPIClient.AuthenticationInfo.token, forHTTPHeaderField: "Authorization")
         if let body = body {
             request.httpBody = try! JSONEncoder().encode(body)
         }
