@@ -15,11 +15,19 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var levelBar: UIProgressView!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         otherDataTableView.delegate = self
         otherDataTableView.dataSource = self
+        FortyTwoAPIClient.getMyInfo { (response, error) in
+            guard let response = response else {
+                SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
+                return
+            }
+            print(response)
+        }
     }
 
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {

@@ -46,17 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         guard let code = components.queryItems?.first(where: { $0.name == "code" })?.value else {
-            let error: String = components.queryItems?.first(where: { $0.name == "error_description" })?.value?.replacingOccurrences(of: "+", with: " ") ?? "An error has occured"
-            let alertVC = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            window?.rootViewController!.present(alertVC, animated: true)
+            let error: String = components.queryItems?.first(where: { $0.name == "error_description" })?.value?.replacingOccurrences(of: "+", with: " ") ?? "Login Error"
+            SharedHelperMethods.showFailureAlert(title: "Login Error", message: error, controller: (window?.rootViewController!)!)
             return false
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "test")
-        window?.rootViewController?.present(vc, animated: true, completion: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "userInfo")
         FortyTwoAPIClient.AuthenticationInfo.code = code
-        FortyTwoAPIClient.getAccessToken()
+        FortyTwoAPIClient.getAccessToken { (success, error) in
+            if !success {
+                SharedHelperMethods.showFailureAlert(title: "Login Error", message: error!.localizedDescription, controller: (self.window?.rootViewController!)!)
+            }
+            self.window?.rootViewController?.present(vc, animated: true, completion: nil)
+        }
         return true
     }
 }

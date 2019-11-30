@@ -36,19 +36,27 @@ class FortyTwoAPIClient {
         }
     }
     
-    class func getMyInfo() {
-        
+    class func getMyInfo(completion: @escaping (MeResponse?, Error?) -> Void) {
+        print(AuthenticationInfo.token)
+        let emptyBody: String? = nil
+        NetworkingTasks.taskForRequest(requestMethod: "GET", url: FortyTwoAPIClient.Endpoints.me.url, responseType: MeResponse.self, body: emptyBody) { (response, error) in
+            guard let response = response else {
+                completion(nil, error)
+                return
+            }
+            completion(response, nil)
+        }
     }
     
-    class func getAccessToken() {
-        let body = TokenRequest(grantType: "authorization_code", clientId: AuthenticationInfo.UID, clientSecret: AuthenticationInfo.secret, code: AuthenticationInfo.code, redirectUri: "swiftycompanion://main")
+    class func getAccessToken(completion: @escaping (Bool, Error?) -> Void) {
+        let body = TokenRequest(grantType: "authorization_code", clientId: AuthenticationInfo.UID, clientSecret: AuthenticationInfo.secret, code: AuthenticationInfo.code, scope: "public projects profile forum", responseType: "code", redirectUri: "swiftycompanion://main")
         NetworkingTasks.taskForRequest(requestMethod: "POST", url: Endpoints.token.url, responseType: TokenResponse.self, body: body) { (response, error) in
             guard let response = response else {
-                print(error!.localizedDescription)
+                completion(false, error)
                 return
             }
             AuthenticationInfo.token = response.accessToken
-            print(AuthenticationInfo.token)
+            completion(true, nil)
         }
     }
 }

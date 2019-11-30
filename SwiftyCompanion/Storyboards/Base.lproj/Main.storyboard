@@ -97,7 +97,7 @@
         <!--User Info View Controller-->
         <scene sceneID="2Ka-o9-BXQ">
             <objects>
-                <viewController storyboardIdentifier="test" id="3gv-Ir-9pB" userLabel="User Info View Controller" customClass="UserInfoViewController" customModule="SwiftyCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userInfo" id="3gv-Ir-9pB" userLabel="User Info View Controller" customClass="UserInfoViewController" customModule="SwiftyCompanion" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uOD-4p-i1b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,6 +182,9 @@
                                     <constraint firstItem="kQY-Zb-oli" firstAttribute="centerX" secondItem="ZXm-Se-8wP" secondAttribute="centerX" id="rts-EJ-9Lf"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="rrB-ag-NyV">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -190,9 +193,11 @@
                             <constraint firstItem="HMI-Rb-Ua4" firstAttribute="trailing" secondItem="4iC-RT-EmF" secondAttribute="trailing" id="3rw-cS-Bpn"/>
                             <constraint firstItem="d8q-Ft-dBc" firstAttribute="top" secondItem="4iC-RT-EmF" secondAttribute="top" id="3w2-ka-wLQ"/>
                             <constraint firstItem="ZXm-Se-8wP" firstAttribute="leading" secondItem="4iC-RT-EmF" secondAttribute="leading" id="4Hy-OR-Cb3"/>
+                            <constraint firstItem="rrB-ag-NyV" firstAttribute="centerY" secondItem="uOD-4p-i1b" secondAttribute="centerY" id="9Z4-tA-boo"/>
                             <constraint firstItem="HMI-Rb-Ua4" firstAttribute="top" secondItem="ZXm-Se-8wP" secondAttribute="bottom" id="HZz-J6-Vmj"/>
                             <constraint firstItem="j2v-0h-Qj9" firstAttribute="top" secondItem="d8q-Ft-dBc" secondAttribute="bottom" id="Jb8-58-AC7"/>
                             <constraint firstItem="kQY-Zb-oli" firstAttribute="width" secondItem="4iC-RT-EmF" secondAttribute="width" multiplier="0.7" id="Ml8-Bc-DZ6"/>
+                            <constraint firstItem="rrB-ag-NyV" firstAttribute="centerX" secondItem="uOD-4p-i1b" secondAttribute="centerX" id="Skn-Fp-av8"/>
                             <constraint firstItem="7yM-cj-Ku4" firstAttribute="height" secondItem="4iC-RT-EmF" secondAttribute="height" multiplier="0.125" constant="-22" id="TxK-xW-8eM"/>
                             <constraint firstItem="j2v-0h-Qj9" firstAttribute="leading" secondItem="4iC-RT-EmF" secondAttribute="leading" id="XVE-Lo-Hzo"/>
                             <constraint firstItem="HMI-Rb-Ua4" firstAttribute="bottom" secondItem="4iC-RT-EmF" secondAttribute="bottom" id="Xpp-CP-IIj"/>
@@ -211,6 +216,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="rrB-ag-NyV" id="SIP-hS-8Ie"/>
                         <outlet property="levelBar" destination="kQY-Zb-oli" id="pQ9-9d-3eo"/>
                         <outlet property="levelLabel" destination="R7e-Td-tT5" id="Sp3-7k-a2N"/>
                         <outlet property="otherDataTableView" destination="HMI-Rb-Ua4" id="6Pt-YP-Rnz"/>

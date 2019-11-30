@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */; };
-		2DDF9A4D238EDC11008570CA /* FortyTwoResponseStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */; };
+		2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */; };
 		A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */; };
 		A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FDE238D246C00DC7968 /* Main.storyboard */; };
 		A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* UdacityFinal.xcdatamodeld */; };
@@ -20,11 +20,13 @@
 		A0FF7FFF23906B4300DC7968 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FFD23906B4300DC7968 /* CustomTableViewCell.swift */; };
 		A0FF800023906B4300DC7968 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */; };
 		A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800123906D6300DC7968 /* UserInfoViewController.swift */; };
+		A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80032391300100DC7968 /* SharedHelperMethods.swift */; };
+		A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoRequestStructs.swift; sourceTree = "<group>"; };
-		2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoResponseStructs.swift; sourceTree = "<group>"; };
+		2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoTokenResponse.swift; sourceTree = "<group>"; };
 		A0FF7FD7238D246C00DC7968 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0FF7FDF238D246C00DC7968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		A0FF7FFD23906B4300DC7968 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		A0FF800123906D6300DC7968 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		A0FF80032391300100DC7968 /* SharedHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
+		A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoMeResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		A0FF7FD9238D246C00DC7968 /* SwiftyCompanion */ = {
 			isa = PBXGroup;
 			children = (
+				A0FF80032391300100DC7968 /* SharedHelperMethods.swift */,
 				A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */,
 				A0FF7FE9238D246D00DC7968 /* Info.plist */,
 				A0FF7FF4238D256500DC7968 /* View */,
@@ -122,7 +127,8 @@
 				A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */,
 				A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClient.swift */,
 				2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */,
-				2DDF9A4C238EDC11008570CA /* FortyTwoResponseStructs.swift */,
+				2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */,
+				A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -208,7 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DDF9A4D238EDC11008570CA /* FortyTwoResponseStructs.swift in Sources */,
+				A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */,
+				2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */,
+				A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */,
 				A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */,
 				A0FF7FFF23906B4300DC7968 /* CustomTableViewCell.swift in Sources */,
 				A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */,

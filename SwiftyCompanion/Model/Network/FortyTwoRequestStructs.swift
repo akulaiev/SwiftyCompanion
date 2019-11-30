@@ -14,6 +14,8 @@ struct TokenRequest: Codable {
     let clientId: String
     let clientSecret: String
     let code: String
+    let scope: String
+    let responseType: String
     let redirectUri: String
 
     enum CodingKeys: String, CodingKey {
@@ -21,6 +23,8 @@ struct TokenRequest: Codable {
         case clientId = "client_id"
         case clientSecret = "client_secret"
         case redirectUri = "redirect_uri"
+        case responseType = "response_type"
         case code
+        case scope
     }
 }
