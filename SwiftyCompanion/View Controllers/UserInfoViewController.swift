@@ -32,6 +32,7 @@ class UserInfoViewController: UIViewController {
 
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         FortyTwoAPIClient.AuthenticationInfo.token = ""
+        UserDefaults.standard.removeObject(forKey: "accessToken")
         self.dismiss(animated: true, completion: nil)
     }
 }
