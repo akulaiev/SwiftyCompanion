@@ -11,7 +11,7 @@
 		2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */; };
 		A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */; };
 		A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FDE238D246C00DC7968 /* Main.storyboard */; };
-		A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* UdacityFinal.xcdatamodeld */; };
+		A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */; };
 		A0FF7FE5238D246D00DC7968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FE4238D246D00DC7968 /* Assets.xcassets */; };
 		A0FF7FE8238D246D00DC7968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FE6238D246D00DC7968 /* LaunchScreen.storyboard */; };
 		A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FF5238D257E00DC7968 /* NetworkingTasks.swift */; };
@@ -55,6 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DDF9A4F23946B1E008570CA /* Local Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Local Data";
+			sourceTree = "<group>";
+		};
 		A0FF7FCE238D246C00DC7968 = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +105,7 @@
 		A0FF7FF0238D251000DC7968 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A0FF7FE1238D246C00DC7968 /* UdacityFinal.xcdatamodeld */,
+				A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 		A0FF7FF2238D253F00DC7968 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2DDF9A4F23946B1E008570CA /* Local Data */,
 				A0FF7FF3238D255000DC7968 /* Network */,
 				A0FF7FF0238D251000DC7968 /* Data */,
 			);
@@ -223,7 +231,7 @@
 				A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
-				A0FF7FE3238D246C00DC7968 /* UdacityFinal.xcdatamodeld in Sources */,
+				A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */,
 				A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,13 +436,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A0FF7FE1238D246C00DC7968 /* UdacityFinal.xcdatamodeld */ = {
+		A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A0FF7FE2238D246C00DC7968 /* UdacityFinal.xcdatamodel */,
 			);
 			currentVersion = A0FF7FE2238D246C00DC7968 /* UdacityFinal.xcdatamodel */;
-			path = UdacityFinal.xcdatamodeld;
+			path = SwiftyCompanion.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

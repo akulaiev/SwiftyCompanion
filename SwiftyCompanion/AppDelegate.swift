@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FortyTwoAPIClient.AuthenticationInfo.code = code
         FortyTwoAPIClient.getAccessToken { (success, error) in
             if !success {
-                SharedHelperMethods.showFailureAlert(title: "Login Error", message: error!.localizedDescription, controller: (self.window?.rootViewController!)!)
+                SharedHelperMethods.showFailureAlert(title: "Login Error", message: error!.localizedDescription, controller: nil)
             }
             self.window?.rootViewController?.present(vc, animated: true, completion: nil)
         }

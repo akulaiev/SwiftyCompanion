@@ -7,19 +7,26 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkingTasks {
     
     //Static function to perform all kinds of networking requests
-    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(requestMethod: String, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(authRequest: Bool, requestMethod: String, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = requestMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        if !SharedHelperMethods.checkExpiredToken() {
-            request.addValue("Bearer+" + FortyTwoAPIClient.AuthenticationInfo.token, forHTTPHeaderField: "Authorization")
-        }
-        else {
-            FortyTwoAPIClient.refreshAuthToken()
+        if !authRequest {
+            if !SharedHelperMethods.checkExpiredToken() {
+                request.addValue("Bearer " + FortyTwoAPIClient.AuthenticationInfo.token, forHTTPHeaderField: "Authorization")
+            }
+            else {
+                FortyTwoAPIClient.refreshAuthToken { (success, error) in
+                    if !success {
+                        SharedHelperMethods.showFailureAlert(title: "Login Error", message: error!.localizedDescription, controller: nil)
+                    }
+                }
+            }
         }
         if let body = body {
             request.httpBody = try! JSONEncoder().encode(body)

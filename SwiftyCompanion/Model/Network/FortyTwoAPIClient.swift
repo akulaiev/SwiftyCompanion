@@ -41,7 +41,7 @@ class FortyTwoAPIClient {
     class func getMyInfo(completion: @escaping (MeResponse?, Error?) -> Void) {
         print(AuthenticationInfo.token)
         let emptyBody: String? = nil
-        NetworkingTasks.taskForRequest(requestMethod: "GET", url: FortyTwoAPIClient.Endpoints.me.url, responseType: MeResponse.self, body: emptyBody) { (response, error) in
+        NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: FortyTwoAPIClient.Endpoints.me.url, responseType: MeResponse.self, body: emptyBody) { (response, error) in
             guard let response = response else {
                 completion(nil, error)
                 return
@@ -49,29 +49,42 @@ class FortyTwoAPIClient {
             completion(response, nil)
         }
     }
+
+    private class func setTokenValues(_ response: TokenResponse) {
+        AuthenticationInfo.token = response.accessToken
+        AuthenticationInfo.refreshToken = response.refreshToken
+        AuthenticationInfo.tokenExpieryDate = response.createdAt + response.expieresIn
+        UserDefaults.standard.set(AuthenticationInfo.token, forKey: "accessToken")
+        UserDefaults.standard.set(response.refreshToken, forKey: "refreshToken")
+        UserDefaults.standard.set(AuthenticationInfo.tokenExpieryDate, forKey: "expieryDate")
+    }
     
-    class func refreshAuthToken() {
+    class func refreshAuthToken(completion: @escaping (Bool, Error?) -> Void) {
         if !AuthenticationInfo.refreshToken.isEmpty, !AuthenticationInfo.token.isEmpty {
-            print("Need to implement refresh logic")
+            let body = RefreshTokenRequest(grantType: "refresh_token", refreshToken: AuthenticationInfo.refreshToken, scope: "public projects profile forum", clientId: AuthenticationInfo.UID, clientSecret: AuthenticationInfo.secret)
+            NetworkingTasks.taskForRequest(authRequest: true, requestMethod: "POST", url: Endpoints.token.url, responseType: TokenResponse.self, body: body) { (response, error) in
+                guard let response = response else {
+                    completion(false, error)
+                    return
+                }
+                self.setTokenValues(response)
+                completion(true, nil)
+            }
         }
-        else if !AuthenticationInfo.refreshToken.isEmpty, AuthenticationInfo.token.isEmpty {
-            print("No refresh token")
-        }
+//        else if !AuthenticationInfo.refreshToken.isEmpty, AuthenticationInfo.token.isEmpty {
+//            print("No valid refresh token")
+//        }
     }
     
     class func getAccessToken(completion: @escaping (Bool, Error?) -> Void) {
         let body = TokenRequest(grantType: "authorization_code", clientId: AuthenticationInfo.UID, clientSecret: AuthenticationInfo.secret, code: AuthenticationInfo.code, scope: "public projects profile forum", responseType: "code", redirectUri: "swiftycompanion://main")
-        NetworkingTasks.taskForRequest(requestMethod: "POST", url: Endpoints.token.url, responseType: TokenResponse.self, body: body) { (response, error) in
+        NetworkingTasks.taskForRequest(authRequest: true, requestMethod: "POST", url: Endpoints.token.url, responseType: TokenResponse.self, body: body) { (response, error) in
             guard let response = response else {
                 completion(false, error)
                 return
             }
-            AuthenticationInfo.token = response.accessToken
-            AuthenticationInfo.refreshToken = response.refreshToken
-            AuthenticationInfo.tokenExpieryDate = response.createdAt + response.expieresIn
-            UserDefaults.standard.set(AuthenticationInfo.token, forKey: "accessToken")
-            UserDefaults.standard.set(response.refreshToken, forKey: "refreshToken")
-            UserDefaults.standard.set(AuthenticationInfo.tokenExpieryDate, forKey: "expieryDate")
+            print(response.scope)
+            self.setTokenValues(response)
             completion(true, nil)
         }
     }

@@ -28,3 +28,20 @@ struct TokenRequest: Codable {
         case scope
     }
 }
+
+struct RefreshTokenRequest: Codable {
+    
+    let grantType: String
+    let refreshToken: String
+    let scope: String
+    let clientId: String
+    let clientSecret: String
+    
+    enum CodingKeys: String, CodingKey {
+        case grantType = "grant_type"
+        case refreshToken = "refresh_token"
+        case scope
+        case clientId = "client_id"
+        case clientSecret = "client_secret"
+    }
+}

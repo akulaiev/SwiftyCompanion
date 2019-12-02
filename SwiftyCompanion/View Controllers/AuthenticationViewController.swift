@@ -10,28 +10,32 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var browseButton: UIButton!
+    @IBOutlet weak var actionButton: UIButton!
     
     fileprivate func updateUI(login: Bool) {
-        loginButton.isEnabled = login
-        loginButton.isHidden = !login
-        browseButton.isEnabled = !login
-        browseButton.isHidden = login
+        if login {
+            actionButton.setTitle("LOG IN", for: .normal)
+        }
+        else {
+            actionButton.setTitle("BROWSE", for: .normal)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.layer.cornerRadius = 5
-        browseButton.layer.cornerRadius = 5
+        actionButton.layer.cornerRadius = 5
         if let token = UserDefaults.standard.object(forKey: "accessToken") {
-            updateUI(login: false)
+            self.updateUI(login: false)
             if let expieryDate = UserDefaults.standard.object(forKey: "expieryDate"), let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") {
                 FortyTwoAPIClient.AuthenticationInfo.refreshToken = refreshToken as! String
                 FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate = expieryDate as! Int
                 FortyTwoAPIClient.AuthenticationInfo.token = token as! String
                 if SharedHelperMethods.checkExpiredToken() {
-                    FortyTwoAPIClient.refreshAuthToken()
+                    FortyTwoAPIClient.refreshAuthToken { (success, error) in
+                        if !success {
+                            SharedHelperMethods.showFailureAlert(title: "Session Expiered", message: error!.localizedDescription, controller: self)
+                        }
+                    }
                 }
             }
         }
@@ -40,8 +44,12 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
-    @IBAction func loginButtonTapped(_ sender: UIButton) {
-        UIApplication.shared.open(URL(string: FortyTwoAPIClient.AuthenticationInfo.authUrlString)!, options: [:], completionHandler: nil)
-        
+    @IBAction func actionButtonTapped(_ sender: UIButton) {
+        if sender.titleLabel?.text == "LOG IN" {
+            UIApplication.shared.open(URL(string: FortyTwoAPIClient.AuthenticationInfo.authUrlString)!, options: [:], completionHandler: nil)
+        }
+        else {
+            performSegue(withIdentifier: "browse", sender: self)
+        }
     }
 }

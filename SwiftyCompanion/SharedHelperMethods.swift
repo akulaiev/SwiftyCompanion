@@ -12,10 +12,16 @@ import UIKit
 class SharedHelperMethods {
     
     //Shows error alerts
-    static func showFailureAlert(title: String, message: String, controller: UIViewController) {
+    static func showFailureAlert(title: String, message: String, controller: UIViewController?) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        controller.present(alertVC, animated: true)
+        if let controller = controller {
+            controller.present(alertVC, animated: true)
+        }
+        else {
+            let viewController = UIApplication.shared.windows.first!.rootViewController as! AuthenticationViewController
+            viewController.present(alertVC, animated: true)
+        }
     }
     
     //Updates controllers' UI while requests are performed
