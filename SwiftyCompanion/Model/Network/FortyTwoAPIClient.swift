@@ -38,8 +38,20 @@ class FortyTwoAPIClient {
         }
     }
     
+    class func getCoalitionsInfo(userID: String, completion: @escaping (CoalitionsResponse?, Error?) -> Void) {
+        let emptyBody: String? = nil
+        let url = URL(string: Endpoints.baseString + "/v2/users/" + userID + "/coalitions")!
+        NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: url, responseType: CoalitionsResponse.self, body: emptyBody) { (response, error) in
+            guard let response = response else {
+                completion(nil, error)
+                return
+            }
+            completion(response, nil)
+        }
+    }
+    
     class func getMyInfo(completion: @escaping (MeResponse?, Error?) -> Void) {
-        print(AuthenticationInfo.token)
+        print("!" + AuthenticationInfo.token + "!")
         let emptyBody: String? = nil
         NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: FortyTwoAPIClient.Endpoints.me.url, responseType: MeResponse.self, body: emptyBody) { (response, error) in
             guard let response = response else {
@@ -60,7 +72,7 @@ class FortyTwoAPIClient {
     }
     
     class func refreshAuthToken(completion: @escaping (Bool, Error?) -> Void) {
-        if !AuthenticationInfo.refreshToken.isEmpty, !AuthenticationInfo.token.isEmpty {
+        if !AuthenticationInfo.refreshToken.isEmpty {
             let body = RefreshTokenRequest(grantType: "refresh_token", refreshToken: AuthenticationInfo.refreshToken, scope: "public projects profile forum", clientId: AuthenticationInfo.UID, clientSecret: AuthenticationInfo.secret)
             NetworkingTasks.taskForRequest(authRequest: true, requestMethod: "POST", url: Endpoints.token.url, responseType: TokenResponse.self, body: body) { (response, error) in
                 guard let response = response else {
@@ -71,9 +83,6 @@ class FortyTwoAPIClient {
                 completion(true, nil)
             }
         }
-//        else if !AuthenticationInfo.refreshToken.isEmpty, AuthenticationInfo.token.isEmpty {
-//            print("No valid refresh token")
-//        }
     }
     
     class func getAccessToken(completion: @escaping (Bool, Error?) -> Void) {
@@ -83,7 +92,6 @@ class FortyTwoAPIClient {
                 completion(false, error)
                 return
             }
-            print(response.scope)
             self.setTokenValues(response)
             completion(true, nil)
         }

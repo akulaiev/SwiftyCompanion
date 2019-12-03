@@ -54,4 +54,17 @@ class NetworkingTasks {
         task.resume()
     }
     
+    class func downloadImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else {
+                completion(nil, error)
+                return
+            }
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                completion(image, nil)
+            }
+        }
+        task.resume()
+    }
 }

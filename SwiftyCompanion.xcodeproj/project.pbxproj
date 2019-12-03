@@ -22,6 +22,7 @@
 		A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800123906D6300DC7968 /* UserInfoViewController.swift */; };
 		A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80032391300100DC7968 /* SharedHelperMethods.swift */; };
 		A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */; };
+		A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		A0FF800123906D6300DC7968 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		A0FF80032391300100DC7968 /* SharedHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
 		A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoMeResponse.swift; sourceTree = "<group>"; };
+		A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoCoalitionsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */,
 				2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */,
 				A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */,
+				A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */,
 				A0FF7FFF23906B4300DC7968 /* CustomTableViewCell.swift in Sources */,
 				A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */,
+				A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */,
 				A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,

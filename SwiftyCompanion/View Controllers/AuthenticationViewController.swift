@@ -24,6 +24,10 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         actionButton.layer.cornerRadius = 5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if let token = UserDefaults.standard.object(forKey: "accessToken") {
             self.updateUI(login: false)
             if let expieryDate = UserDefaults.standard.object(forKey: "expieryDate"), let refreshToken = UserDefaults.standard.object(forKey: "refreshToken") {
