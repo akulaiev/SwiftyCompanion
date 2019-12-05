@@ -22,9 +22,15 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var campusCityLabel: UILabel!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var followButton: UIButton!
     
     var userData: UserResponse!
     var userId: String = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getUserData()
+    }
     
     fileprivate func setImages(url: URL, imageView: UIImageView, indicator: UIActivityIndicatorView?) {
         NetworkingTasks.downloadImage(url: url) { (image, error) in
@@ -75,11 +81,10 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getUserData()
+    
+    @IBAction func followButtonTapped(_ sender: UIButton) {
     }
-
+    
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         FortyTwoAPIClient.AuthenticationInfo.token = ""
         UserDefaults.standard.removeObject(forKey: "accessToken")
