@@ -25,11 +25,13 @@ class FortyTwoAPIClient {
         
         case token
         case me
+        case search
 
         var stringValue: String {
             switch self {
             case .token: return Endpoints.baseString + "/oauth/token"
             case .me: return Endpoints.baseString + "/v2/me"
+            case .search: return Endpoints.baseString + "/v2/users"
             }
         }
 
@@ -95,5 +97,56 @@ class FortyTwoAPIClient {
             self.setTokenValues(response)
             completion(true, nil)
         }
+    }
+    
+    private class func getMaxValue(minValue: String) -> String {
+        let alphStr = "abcdefghijklmnopqrstuvwxyz"
+        var minValLowerCase = minValue.lowercased()
+        var hasZ = false
+        var resStr = ""
+        
+        while minValLowerCase.count > 0, minValLowerCase.last == "z" {
+            hasZ = true
+            minValLowerCase = String(minValLowerCase.dropLast())
+        }
+        if hasZ, minValLowerCase.count == 0 {
+            resStr = minValue.lowercased() + "z"
+        }
+        else {
+            let strIndx = alphStr.firstIndex(of: minValLowerCase.last!)
+            if let strIndx = strIndx {
+                resStr = String(minValLowerCase.dropLast()) + String(alphStr[alphStr.index(strIndx, offsetBy: 1)])
+            }
+        }
+        return resStr
+    }
+    
+    class func search(query: String, completion: @escaping (SearchResponse, Error?) -> Void) -> URLSessionTask {
+        let emptyBody: String? = nil
+        
+        var allowedCharacterSet = CharacterSet.alphanumerics
+        allowedCharacterSet.insert(charactersIn: "[]?=,/:.")
+        if let escapedString = (Endpoints.search.stringValue + "?range[login]=" + query.lowercased() + "," + getMaxValue(minValue: query)).addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) {
+            print(escapedString)
+            let url = URL(string: escapedString)
+            print(url)
+        }
+        let url = URL(string: Endpoints.search.stringValue + "?range[login]=" + query.lowercased() + "," + getMaxValue(minValue: query))!
+//        let url = URL(string: escapedString)
+        print(url)
+        let task = NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: url, responseType: SearchResponse.self, body: emptyBody) { (response, error) in
+            if let response = response {
+                DispatchQueue.main.async {
+                    completion(response, nil)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    print(error!.localizedDescription)
+                    completion([], error)
+                }
+            }
+        }
+        return task
     }
 }

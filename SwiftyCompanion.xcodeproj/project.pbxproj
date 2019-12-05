@@ -23,6 +23,8 @@
 		A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80032391300100DC7968 /* SharedHelperMethods.swift */; };
 		A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */; };
 		A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */; };
+		A0FF800A2396BE2000DC7968 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80092396BE2000DC7968 /* SearchViewController.swift */; };
+		A0FF800C2398266300DC7968 /* FortyTwoSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		A0FF80032391300100DC7968 /* SharedHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
 		A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoMeResponse.swift; sourceTree = "<group>"; };
 		A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoCoalitionsResponse.swift; sourceTree = "<group>"; };
+		A0FF80092396BE2000DC7968 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 		A0FF7FF1238D251D00DC7968 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A0FF80092396BE2000DC7968 /* SearchViewController.swift */,
 				A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */,
 				A0FF800123906D6300DC7968 /* UserInfoViewController.swift */,
 			);
@@ -140,6 +145,7 @@
 				2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */,
 				A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */,
 				A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */,
+				A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0FF800C2398266300DC7968 /* FortyTwoSearchResponse.swift in Sources */,
 				A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */,
 				2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */,
 				A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */,
@@ -233,6 +240,7 @@
 				A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */,
 				A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */,
 				A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */,
+				A0FF800A2396BE2000DC7968 /* SearchViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */,

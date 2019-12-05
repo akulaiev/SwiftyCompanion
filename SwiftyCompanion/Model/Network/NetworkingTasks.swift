@@ -12,7 +12,7 @@ import UIKit
 class NetworkingTasks {
     
     //Static function to perform all kinds of networking requests
-    class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(authRequest: Bool, requestMethod: String, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) {
+    @discardableResult class func taskForRequest<RequestType: Encodable, ResponseType: Decodable>(authRequest: Bool, requestMethod: String, url: URL, responseType: ResponseType.Type, body: RequestType?, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionTask {
         var request = URLRequest(url: url)
         request.httpMethod = requestMethod
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -52,6 +52,7 @@ class NetworkingTasks {
             }
         }
         task.resume()
+        return task
     }
     
     class func downloadImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
