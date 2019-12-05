@@ -25,14 +25,6 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showDetail" {
-//            let detailVC = segue.destination as! MovieDetailViewController
-//            detailVC.movie = movies[selectedIndex]
-//        }
-//    }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -56,9 +48,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        responses = []
+        tableView.reloadData()
         searchBar.endEditing(true)
     }
-
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -73,18 +67,17 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "responsesCell")!
-
         let response = responses[indexPath.row]
-
         cell.textLabel?.text = response.login
-
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedIndex = indexPath.row
-//        performSegue(withIdentifier: "showDetail", sender: nil)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        selectedIndex = indexPath.row
+        let vc = storyboard?.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController
+        vc.userId = String(responses[selectedIndex].id)
+        self.present(vc, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

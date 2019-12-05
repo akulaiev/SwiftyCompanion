@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - MeResponse
-struct MeResponse: Codable {
+struct UserResponse: Codable {
     let id: Int
     let email, login, firstName, lastName: String
     let url: String

@@ -21,7 +21,7 @@
 		A0FF800023906B4300DC7968 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */; };
 		A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800123906D6300DC7968 /* UserInfoViewController.swift */; };
 		A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80032391300100DC7968 /* SharedHelperMethods.swift */; };
-		A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */; };
+		A0FF800623913E4600DC7968 /* FortyTwoUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800523913E4600DC7968 /* FortyTwoUserResponse.swift */; };
 		A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */; };
 		A0FF800A2396BE2000DC7968 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF80092396BE2000DC7968 /* SearchViewController.swift */; };
 		A0FF800C2398266300DC7968 /* FortyTwoSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */; };
@@ -44,7 +44,7 @@
 		A0FF7FFE23906B4300DC7968 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		A0FF800123906D6300DC7968 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		A0FF80032391300100DC7968 /* SharedHelperMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedHelperMethods.swift; sourceTree = "<group>"; };
-		A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoMeResponse.swift; sourceTree = "<group>"; };
+		A0FF800523913E4600DC7968 /* FortyTwoUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoUserResponse.swift; sourceTree = "<group>"; };
 		A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoCoalitionsResponse.swift; sourceTree = "<group>"; };
 		A0FF80092396BE2000DC7968 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoSearchResponse.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				A0FF7FF9238D44FF00DC7968 /* FortyTwoAPIClient.swift */,
 				2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */,
 				2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */,
-				A0FF800523913E4600DC7968 /* FortyTwoMeResponse.swift */,
+				A0FF800523913E4600DC7968 /* FortyTwoUserResponse.swift */,
 				A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */,
 				A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */,
 			);
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0FF800C2398266300DC7968 /* FortyTwoSearchResponse.swift in Sources */,
-				A0FF800623913E4600DC7968 /* FortyTwoMeResponse.swift in Sources */,
+				A0FF800623913E4600DC7968 /* FortyTwoUserResponse.swift in Sources */,
 				2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */,
 				A0FF80042391300100DC7968 /* SharedHelperMethods.swift in Sources */,
 				A0FF7FF8238D44B500DC7968 /* AuthenticationViewController.swift in Sources */,

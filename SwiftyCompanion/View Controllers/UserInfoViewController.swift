@@ -23,7 +23,8 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    var userData: MeResponse!
+    var userData: UserResponse!
+    var userId: String = ""
     
     fileprivate func setImages(url: URL, imageView: UIImageView, indicator: UIActivityIndicatorView?) {
         NetworkingTasks.downloadImage(url: url) { (image, error) in
@@ -38,7 +39,7 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    func setInfoLabels(_ userData: MeResponse) {
+    func setInfoLabels(_ userData: UserResponse) {
         walletLabel.text = String(userData.wallet)
         correctionPointsLabel.text = String(userData.correctionPoint)
         usernameLabel.text = userData.displayname + " (" + userData.login + ")"
@@ -63,7 +64,7 @@ class UserInfoViewController: UIViewController {
     
     fileprivate func getUserData() {
         activityIndicator.startAnimating()
-        FortyTwoAPIClient.getMyInfo { (response, error) in
+        FortyTwoAPIClient.getUserInfo(userId: userId) {(response, error) in
             guard let response = response else {
                 SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
                 return

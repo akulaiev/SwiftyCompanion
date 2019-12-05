@@ -52,10 +52,17 @@ class FortyTwoAPIClient {
         }
     }
     
-    class func getMyInfo(completion: @escaping (MeResponse?, Error?) -> Void) {
+    class func getUserInfo(userId: String, completion: @escaping (UserResponse?, Error?) -> Void) {
         print("!" + AuthenticationInfo.token + "!")
         let emptyBody: String? = nil
-        NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: FortyTwoAPIClient.Endpoints.me.url, responseType: MeResponse.self, body: emptyBody) { (response, error) in
+        var urlStr = ""
+        if userId.isEmpty {
+            urlStr = Endpoints.me.stringValue
+        }
+        else {
+            urlStr = Endpoints.search.stringValue + "/" + userId
+        }
+        NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: URL(string: urlStr)!, responseType: UserResponse.self, body: emptyBody) { (response, error) in
             guard let response = response else {
                 completion(nil, error)
                 return
@@ -105,17 +112,19 @@ class FortyTwoAPIClient {
         var hasZ = false
         var resStr = ""
         
-        while minValLowerCase.count > 0, minValLowerCase.last == "z" {
-            hasZ = true
-            minValLowerCase = String(minValLowerCase.dropLast())
-        }
-        if hasZ, minValLowerCase.count == 0 {
-            resStr = minValue.lowercased() + "z"
-        }
-        else {
-            let strIndx = alphStr.firstIndex(of: minValLowerCase.last!)
-            if let strIndx = strIndx {
-                resStr = String(minValLowerCase.dropLast()) + String(alphStr[alphStr.index(strIndx, offsetBy: 1)])
+        if !minValLowerCase.isEmpty {
+            while minValLowerCase.count > 0, minValLowerCase.last == "z" {
+                hasZ = true
+                minValLowerCase = String(minValLowerCase.dropLast())
+            }
+            if hasZ, minValLowerCase.count == 0 {
+                resStr = minValue.lowercased() + "z"
+            }
+            else {
+                let strIndx = alphStr.firstIndex(of: minValLowerCase.last!)
+                if let strIndx = strIndx {
+                    resStr = String(minValLowerCase.dropLast()) + String(alphStr[alphStr.index(strIndx, offsetBy: 1)])
+                }
             }
         }
         return resStr
@@ -123,17 +132,7 @@ class FortyTwoAPIClient {
     
     class func search(query: String, completion: @escaping (SearchResponse, Error?) -> Void) -> URLSessionTask {
         let emptyBody: String? = nil
-        
-        var allowedCharacterSet = CharacterSet.alphanumerics
-        allowedCharacterSet.insert(charactersIn: "[]?=,/:.")
-        if let escapedString = (Endpoints.search.stringValue + "?range[login]=" + query.lowercased() + "," + getMaxValue(minValue: query)).addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) {
-            print(escapedString)
-            let url = URL(string: escapedString)
-            print(url)
-        }
         let url = URL(string: Endpoints.search.stringValue + "?range[login]=" + query.lowercased() + "," + getMaxValue(minValue: query))!
-//        let url = URL(string: escapedString)
-        print(url)
         let task = NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: url, responseType: SearchResponse.self, body: emptyBody) { (response, error) in
             if let response = response {
                 DispatchQueue.main.async {
