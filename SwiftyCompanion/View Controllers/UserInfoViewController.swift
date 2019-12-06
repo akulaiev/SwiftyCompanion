@@ -26,17 +26,34 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var followedUsersButton: UIBarButtonItem!
     @IBOutlet weak var searchButton: UIBarButtonItem!
+    @IBOutlet weak var refreshButton: UIButton!
     
     var userData: UserResponse!
     var userId: String = ""
     var dataController: DataController = AppDelegate.dataController
+    var followUserData: FollowedUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if userId.isEmpty {
             followButton.isHidden = true
         }
+        else {
+            followUserData = checkFollowedUser()
+            if followUserData != nil {
+                followButton.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
+            }
+        }
         getUserData()
+    }
+    
+    func checkFollowedUser() -> FollowedUser? {
+        let predicate = NSPredicate(format: "userId == %@", userId)
+        let result = dataController.fetchRecordsForEntity("FollowedUser", inManagedObjectContext: dataController.viewContext, predicate: predicate)
+        if result.count == 0 {
+            return nil
+        }
+        return (result[0] as! FollowedUser)
     }
     
     fileprivate func setImages(url: URL, imageView: UIImageView, indicator: UIActivityIndicatorView?) {
@@ -110,8 +127,19 @@ class UserInfoViewController: UIViewController {
             let info = UIAlertController(title: "Followed!", message: "", preferredStyle: .actionSheet)
             info.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(info, animated: true, completion: nil)
-            sender.imageView?.image = UIImage(named: "unfollow")
+            sender.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
         }
+        else {
+            guard let followedUser = followUserData else {
+                return
+            }
+            dataController.viewContext.delete(followedUser)
+            dataController.saveContext()
+            sender.setImage(UIImage(named: "follow"), for: UIControl.State.normal)
+        }
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: UIButton) {
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
