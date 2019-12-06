@@ -12,7 +12,7 @@ struct CoalitionsResponseElement: Codable {
     let id: Int
     let name, slug: String
     let imageURL: String
-    let coverURL: String
+    let coverURL: String?
     let color: String
     let score, userID: Int
     

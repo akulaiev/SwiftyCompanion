@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.autocapitalizationType = .none
     }
 }
 
@@ -79,5 +80,4 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         self.present(vc, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
 }

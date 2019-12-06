@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class UserInfoViewController: UIViewController {
     
@@ -23,12 +24,18 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var followedUsersButton: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     
     var userData: UserResponse!
     var userId: String = ""
+    var dataController: DataController = AppDelegate.dataController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userId.isEmpty {
+            followButton.isHidden = true
+        }
         getUserData()
     }
     
@@ -49,8 +56,10 @@ class UserInfoViewController: UIViewController {
         walletLabel.text = String(userData.wallet)
         correctionPointsLabel.text = String(userData.correctionPoint)
         usernameLabel.text = userData.displayname + " (" + userData.login + ")"
-        levelLabel.text = String(userData.cursusUsers[0].level)
-        levelBar.progress = Float(userData.cursusUsers[0].level - Double(Int(userData.cursusUsers[0].level)))
+        if userData.cursusUsers.count > 0 {
+            levelLabel.text = String(userData.cursusUsers[0].level)
+            levelBar.progress = Float(userData.cursusUsers[0].level - Double(Int(userData.cursusUsers[0].level)))
+        }
         if let grade = userData.cursusUsers[0].grade {
             rankLabel.text = grade
         }
@@ -60,10 +69,19 @@ class UserInfoViewController: UIViewController {
                 SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
                 return
             }
-            self.coalitionLabel.text = response[0].name
-            self.levelBar.progressTintColor = SharedHelperMethods.hexStringToUIColor(hex: response[0].color)
-            self.logoutButton.tintColor = self.levelBar.progressTintColor
-            self.setImages(url: URL(string: response[0].coverURL)!, imageView: self.backgroundImageView, indicator: nil)
+            if response.count > 0 {
+                self.coalitionLabel.text = response[0].name
+                self.levelBar.progressTintColor = SharedHelperMethods.hexStringToUIColor(hex: response[0].color)
+                self.logoutButton.tintColor = self.levelBar.progressTintColor
+                self.followedUsersButton.tintColor = self.levelBar.progressTintColor
+                self.searchButton.tintColor = self.levelBar.progressTintColor
+                if let coverURL = response[0].coverURL {
+                    self.setImages(url: URL(string: coverURL)!, imageView: self.backgroundImageView, indicator: nil)
+                }
+            }
+            if !self.userId.isEmpty {
+                self.followButton.isHidden = false
+            }
         }
         
     }
@@ -81,16 +99,28 @@ class UserInfoViewController: UIViewController {
         }
     }
     
-    
     @IBAction func followButtonTapped(_ sender: UIButton) {
+        if sender.imageView?.image == UIImage(named: "follow") {
+            let newUser = FollowedUser(context: dataController.viewContext)
+            newUser.userId = userId
+            newUser.userImage = userImageView.image?.pngData()
+            newUser.displayName = userData.displayname
+            newUser.backgroundImage = backgroundImageView.image?.pngData()
+            dataController.saveContext()
+            let info = UIAlertController(title: "Followed!", message: "", preferredStyle: .actionSheet)
+            info.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(info, animated: true, completion: nil)
+            sender.imageView?.image = UIImage(named: "unfollow")
+        }
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         FortyTwoAPIClient.AuthenticationInfo.token = ""
+        FortyTwoAPIClient.AuthenticationInfo.refreshToken = ""
+        FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate = 0
         UserDefaults.standard.removeObject(forKey: "accessToken")
         UserDefaults.standard.removeObject(forKey: "refreshToken")
         UserDefaults.standard.removeObject(forKey: "expieryDate")
-        
         self.dismiss(animated: true, completion: nil)
     }
 }

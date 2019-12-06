@@ -47,7 +47,7 @@ class AuthenticationViewController: UIViewController {
             updateUI(login: true)
         }
     }
-    
+     
     @IBAction func actionButtonTapped(_ sender: UIButton) {
         if sender.titleLabel?.text == "LOG IN" {
             UIApplication.shared.open(URL(string: FortyTwoAPIClient.AuthenticationInfo.authUrlString)!, options: [:], completionHandler: nil)

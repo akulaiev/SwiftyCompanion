@@ -19,22 +19,29 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyTexture" translatesAutoresizingMaskIntoConstraints="NO" id="nYC-iR-L2X" userLabel="Background Image View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="111.5"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdI-JG-624">
-                        <rect key="frame" x="5" y="45.5" width="150" height="21"/>
+                        <rect key="frame" x="15" y="45.5" width="140" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wL3-os-LPR">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wL3-os-LPR">
                         <rect key="frame" x="160" y="0.0" width="160" height="111.5"/>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="xdI-JG-624" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="FUy-dY-exB"/>
+                    <constraint firstItem="nYC-iR-L2X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="0K1-g1-uW2"/>
+                    <constraint firstAttribute="bottom" secondItem="nYC-iR-L2X" secondAttribute="bottom" id="26Q-3g-Qy8"/>
+                    <constraint firstItem="xdI-JG-624" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="FUy-dY-exB"/>
                     <constraint firstAttribute="bottom" secondItem="wL3-os-LPR" secondAttribute="bottom" id="Fmi-gQ-yZB"/>
+                    <constraint firstAttribute="trailing" secondItem="nYC-iR-L2X" secondAttribute="trailing" id="Qbx-bv-fR1"/>
                     <constraint firstItem="wL3-os-LPR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Tsc-tV-t5P"/>
                     <constraint firstAttribute="trailing" secondItem="wL3-os-LPR" secondAttribute="trailing" id="Wnt-i8-alA"/>
                     <constraint firstItem="wL3-os-LPR" firstAttribute="leading" secondItem="xdI-JG-624" secondAttribute="trailing" constant="5" id="ZQs-Ji-8WB"/>
+                    <constraint firstItem="nYC-iR-L2X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="euB-80-K6t"/>
                     <constraint firstItem="xdI-JG-624" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="wrf-xk-vAz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -43,10 +50,14 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundImage" destination="nYC-iR-L2X" id="aVq-cR-g2o"/>
                 <outlet property="paramIcon" destination="wL3-os-LPR" id="u0v-Sp-EOj"/>
                 <outlet property="paramName" destination="xdI-JG-624" id="oJD-gc-IX9"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="175.44642857142856"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="greyTexture" width="152.5" height="221.5"/>
+    </resources>
 </document>

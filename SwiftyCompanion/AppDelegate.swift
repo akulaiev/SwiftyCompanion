@@ -13,10 +13,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    static let dataController = DataController(modelName: "SwiftyCompanion")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        AppDelegate.dataController.load()
         return true
     }
 
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "userInfo")
+        let vc = storyboard.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController
         FortyTwoAPIClient.AuthenticationInfo.code = code
         FortyTwoAPIClient.getAccessToken { (success, error) in
             if !success {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */; };
 		2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */; };
+		2DDF9A53239983DE008570CA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A52239983DE008570CA /* DataController.swift */; };
+		2DDF9A5523999F1B008570CA /* FollowedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */; };
 		A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */; };
 		A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FDE238D246C00DC7968 /* Main.storyboard */; };
 		A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoRequestStructs.swift; sourceTree = "<group>"; };
 		2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoTokenResponse.swift; sourceTree = "<group>"; };
+		2DDF9A52239983DE008570CA /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedUsersViewController.swift; sourceTree = "<group>"; };
 		A0FF7FD7238D246C00DC7968 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0FF7FDF238D246C00DC7968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		A0FF7FF0238D251000DC7968 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				2DDF9A52239983DE008570CA /* DataController.swift */,
 				A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */,
 			);
 			path = Data;
@@ -122,6 +127,7 @@
 				A0FF80092396BE2000DC7968 /* SearchViewController.swift */,
 				A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */,
 				A0FF800123906D6300DC7968 /* UserInfoViewController.swift */,
+				2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -241,6 +247,8 @@
 				A0FF80082395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift in Sources */,
 				A0FF800223906D6300DC7968 /* UserInfoViewController.swift in Sources */,
 				A0FF800A2396BE2000DC7968 /* SearchViewController.swift in Sources */,
+				2DDF9A53239983DE008570CA /* DataController.swift in Sources */,
+				2DDF9A5523999F1B008570CA /* FollowedUsersViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */,

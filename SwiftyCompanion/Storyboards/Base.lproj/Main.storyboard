@@ -88,7 +88,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-tc-2s7" userLabel="Background Image View">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyTexture" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-tc-2s7" userLabel="Background Image View">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="tintColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -105,12 +105,19 @@
                                                 <action selector="logoutButtonTapped:" destination="3gv-Ir-9pB" id="J0K-nq-ZlL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1oc-LK-IK6">
-                                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <segue destination="Vnu-sH-BWC" kind="show" identifier="toSearch" id="n2X-zd-xaW"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="search" id="1oc-LK-IK6">
+                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <segue destination="Vnu-sH-BWC" kind="show" identifier="toSearch" id="n2X-zd-xaW"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="FOLLOWED USERS" id="USE-Gj-Sf9">
+                                                <connections>
+                                                    <segue destination="pr0-ID-zmi" kind="show" identifier="toFollowed" id="DHB-3f-wAC"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -230,7 +237,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-dv-h1a">
                                                 <rect key="frame" x="0.0" y="232" width="123" height="58"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac7-pm-M2e">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="city" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ac7-pm-M2e">
                                                         <rect key="frame" x="0.0" y="0.0" width="123" height="58"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -370,10 +377,12 @@
                         <outlet property="coalitionLabel" destination="zcn-uk-oKv" id="Yd9-c1-20H"/>
                         <outlet property="correctionPointsLabel" destination="5O4-pO-IA9" id="vCU-KR-Mlv"/>
                         <outlet property="followButton" destination="gQP-D5-3b6" id="Yqb-yn-i3o"/>
+                        <outlet property="followedUsersButton" destination="USE-Gj-Sf9" id="FFw-EY-za2"/>
                         <outlet property="levelBar" destination="kQY-Zb-oli" id="pQ9-9d-3eo"/>
                         <outlet property="levelLabel" destination="IO6-2s-R7P" id="elt-cV-Xrx"/>
                         <outlet property="logoutButton" destination="fYT-pD-5Oi" id="EXi-Wp-TWq"/>
                         <outlet property="rankLabel" destination="aOT-2n-aRR" id="dlA-HP-TGh"/>
+                        <outlet property="searchButton" destination="1oc-LK-IK6" id="4sS-ym-x1p"/>
                         <outlet property="userImageView" destination="5Rs-hF-Qnr" id="Meb-Zg-4Hc"/>
                         <outlet property="usernameLabel" destination="yIl-Pz-otP" id="x4c-c9-sZt"/>
                         <outlet property="walletLabel" destination="6Ka-UK-xsz" id="ep5-XO-Gen"/>
@@ -382,6 +391,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAy-Db-D4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="721.73913043478262" y="18.75"/>
+        </scene>
+        <!--Followed Users View Controller-->
+        <scene sceneID="GKH-Sb-1eA">
+            <objects>
+                <viewController id="pr0-ID-zmi" userLabel="Followed Users View Controller" customClass="FollowedUsersViewController" customModule="SwiftyCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CPh-ua-ry3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ezI-uo-U8I">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="followedUsersCell" id="OOa-YI-sy7" customClass="CustomTableViewCell" customModule="SwiftyCompanion" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OOa-YI-sy7" id="dau-hx-v6P" customClass="CustomTableViewCell" customModule="SwiftyCompanion" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="pr0-ID-zmi" id="Og0-dT-sJi"/>
+                                    <outlet property="delegate" destination="pr0-ID-zmi" id="NsU-LM-4gV"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ezI-uo-U8I" firstAttribute="trailing" secondItem="EgB-H5-xWh" secondAttribute="trailing" id="3DE-UV-xPR"/>
+                            <constraint firstItem="ezI-uo-U8I" firstAttribute="bottom" secondItem="EgB-H5-xWh" secondAttribute="bottom" id="ZZt-Yy-kkw"/>
+                            <constraint firstItem="ezI-uo-U8I" firstAttribute="leading" secondItem="EgB-H5-xWh" secondAttribute="leading" id="dSr-Dk-7vx"/>
+                            <constraint firstItem="ezI-uo-U8I" firstAttribute="top" secondItem="EgB-H5-xWh" secondAttribute="top" id="h2E-HV-Ym8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EgB-H5-xWh"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ezI-uo-U8I" id="NwN-M4-q25"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n9a-3J-NSc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1495.6521739130435" y="420.53571428571428"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="Cdl-md-41K">
@@ -453,6 +506,7 @@
         <image name="42logoWhite" width="300" height="300"/>
         <image name="blueTexture" width="152.5" height="221.5"/>
         <image name="follow" width="59.5" height="55"/>
+        <image name="greyTexture" width="152.5" height="221.5"/>
     </resources>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
