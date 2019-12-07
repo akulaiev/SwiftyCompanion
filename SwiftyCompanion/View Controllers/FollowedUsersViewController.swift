@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+// Displays followed users
+
 class FollowedUsersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +24,6 @@ class FollowedUsersViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         tableView.register(UINib.init(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "followedUsersCell")
         setupFetchedResultsController()
-//        fetchedResultsController.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +60,6 @@ class FollowedUsersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(fetchedResultsController.sections?[0].numberOfObjects ?? 0)
         return fetchedResultsController.sections?[0].numberOfObjects ?? 0
     }
     
@@ -74,52 +74,29 @@ class FollowedUsersViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = self.navigationController?.viewControllers.first as! UserInfoViewController
+        vc.userId = fetchedResultsController.object(at: indexPath).userId ?? ""
+        self.navigationController?.popToRootViewController(animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // Deletes the `Note` at the specified index path
+    func deleteUser(at indexPath: IndexPath) {
+        let userToDelete = fetchedResultsController.object(at: indexPath)
+        dataController.viewContext.delete(userToDelete)
+        try? dataController.viewContext.save()
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("here")
-//        switch editingStyle {
-//        case .delete: deleteNote(at: indexPath)
-//        default: () // Unsupported
-//        }
+        switch editingStyle {
+        case .delete: deleteUser(at: indexPath)
+        default: () // Unsupported
+        }
     }
 
 
 }
-
-//extension FollowedUsersViewController: NSFetchedResultsControllerDelegate {
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-//        switch type {
-//        case .insert:
-//            tableView.insertRows(at: [newIndexPath!], with: .fade)
-//            break
-//        case .delete:
-//            tableView.deleteRows(at: [indexPath!], with: .fade)
-//            break
-//        case .update:
-//            tableView.reloadRows(at: [indexPath!], with: .fade)
-//        case .move:
-//            tableView.moveRow(at: indexPath!, to: newIndexPath!)
-//        }
-//    }
-//
-//    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-//        let indexSet = IndexSet(integer: sectionIndex)
-//        switch type {
-//        case .insert: tableView.insertSections(indexSet, with: .fade)
-//        case .delete: tableView.deleteSections(indexSet, with: .fade)
-//        case .update, .move:
-//            fatalError("Invalid change type in controller(_:didChange:atSectionIndex:for:). Only .insert or .delete should be possible.")
-//        }
-//    }
-//
-//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.beginUpdates()
-//    }
-//
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.endUpdates()
-//    }
-//}
 
 extension FollowedUsersViewController: NSFetchedResultsControllerDelegate {
 

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Search user logins, with autocomplete
+
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -28,6 +30,7 @@ class SearchViewController: UIViewController {
     }
 }
 
+// UISearchBarDelegate protocol methods
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -75,9 +78,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
-        let vc = storyboard?.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController
+        let vc = self.navigationController?.viewControllers.first as! UserInfoViewController
         vc.userId = String(responses[selectedIndex].id)
-        self.present(vc, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

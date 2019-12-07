@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Custom cell for Followed Users VC
 class CustomTableViewCell: UITableViewCell {
 
     @IBOutlet weak var paramName: UILabel!

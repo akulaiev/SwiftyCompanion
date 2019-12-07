@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Checks for valid tokens and kicks OAuth to login
+
 class AuthenticationViewController: UIViewController {
     
     @IBOutlet weak var actionButton: UIButton!
@@ -44,7 +46,13 @@ class AuthenticationViewController: UIViewController {
             }
         }
         else {
-            updateUI(login: true)
+            FortyTwoAPIClient.AuthenticationInfo.refreshToken = "01314295f6dabb7c55c1013bf242cd29314b3c1319b482cd618f47a7d5b0ae85"
+            FortyTwoAPIClient.refreshAuthToken { (success, error) in
+                if !success {
+                    SharedHelperMethods.showFailureAlert(title: "Failed to refresh token", message: error!.localizedDescription, controller: self)
+                }
+            }
+//            updateUI(login: true)
         }
     }
      

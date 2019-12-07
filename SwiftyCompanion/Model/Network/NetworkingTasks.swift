@@ -55,6 +55,7 @@ class NetworkingTasks {
         return task
     }
     
+    // Downloads images from URL
     class func downloadImage(url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else {

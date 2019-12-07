@@ -10,6 +10,7 @@ import Foundation
 
 class FortyTwoAPIClient {
 
+    // Data, needed for Authentication
     struct AuthenticationInfo {
         static var UID: String = "f29092fb5aff7b5d2fc123ccad8892830e50e4159e82050c808c5f867a117a46"
         static var secret: String = "58ce889ea553f067dfc7e0a080a51458b7cb0aee1d99da615a626ffdfc862730"
@@ -20,6 +21,7 @@ class FortyTwoAPIClient {
         static var code: String = ""
     }
     
+    // API endpoints
     enum Endpoints {
         static let baseString = "https://api.intra.42.fr"
         
@@ -40,6 +42,8 @@ class FortyTwoAPIClient {
         }
     }
     
+    // Different API data queries
+    
     class func getCoalitionsInfo(userID: String, completion: @escaping (CoalitionsResponse?, Error?) -> Void) {
         let emptyBody: String? = nil
         let url = URL(string: Endpoints.baseString + "/v2/users/" + userID + "/coalitions")!
@@ -53,7 +57,6 @@ class FortyTwoAPIClient {
     }
     
     class func getUserInfo(userId: String, completion: @escaping (UserResponse?, Error?) -> Void) {
-        print("!" + AuthenticationInfo.token + "!")
         let emptyBody: String? = nil
         var urlStr = ""
         if userId.isEmpty {
@@ -71,6 +74,7 @@ class FortyTwoAPIClient {
         }
     }
 
+    // Helper function to set and persist token values
     private class func setTokenValues(_ response: TokenResponse) {
         AuthenticationInfo.token = response.accessToken
         AuthenticationInfo.refreshToken = response.refreshToken
@@ -106,6 +110,7 @@ class FortyTwoAPIClient {
         }
     }
     
+    // Helper function for autocomplete request
     private class func getMaxValue(minValue: String) -> String {
         let alphStr = "abcdefghijklmnopqrstuvwxyz"
         var minValLowerCase = minValue.lowercased()

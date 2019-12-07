@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="height" constant="35" id="qff-pH-vrT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="LOG IN">
+                                <state key="normal" title="BROWSE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -100,14 +100,12 @@
                                 <items>
                                     <navigationItem id="yRm-B2-grl">
                                         <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="fYT-pD-5Oi">
-                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="logoutButtonTapped:" destination="3gv-Ir-9pB" id="J0K-nq-ZlL"/>
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="search" id="1oc-LK-IK6">
-                                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <segue destination="Vnu-sH-BWC" kind="show" identifier="toSearch" id="n2X-zd-xaW"/>
                                                 </connections>
@@ -136,7 +134,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZb-qD-Kos">
                                                         <rect key="frame" x="0.0" y="0.0" width="229" height="58"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -437,8 +435,8 @@
                         <constraints>
                             <constraint firstItem="ezI-uo-U8I" firstAttribute="trailing" secondItem="EgB-H5-xWh" secondAttribute="trailing" constant="-15" id="3DE-UV-xPR"/>
                             <constraint firstItem="ezI-uo-U8I" firstAttribute="bottom" secondItem="EgB-H5-xWh" secondAttribute="bottom" constant="15" id="ZZt-Yy-kkw"/>
+                            <constraint firstItem="ezI-uo-U8I" firstAttribute="top" secondItem="EgB-H5-xWh" secondAttribute="top" constant="15" id="c3d-CP-Tp9"/>
                             <constraint firstItem="ezI-uo-U8I" firstAttribute="leading" secondItem="EgB-H5-xWh" secondAttribute="leading" constant="15" id="dSr-Dk-7vx"/>
-                            <constraint firstItem="ezI-uo-U8I" firstAttribute="top" secondItem="EgB-H5-xWh" secondAttribute="top" constant="15" id="h2E-HV-Ym8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EgB-H5-xWh"/>
                     </view>
@@ -502,7 +500,7 @@
         <!--Navigation Controller-->
         <scene sceneID="deX-a5-i5v">
             <objects>
-                <navigationController id="fem-bD-XFr" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation" id="fem-bD-XFr" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BXM-cQ-iVZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

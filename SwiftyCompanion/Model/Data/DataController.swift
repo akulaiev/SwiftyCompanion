@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
+// Manages Core Data controller
 class DataController {
     
     let persistentContainer: NSPersistentContainer

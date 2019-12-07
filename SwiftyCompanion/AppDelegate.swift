@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static let dataController = DataController(modelName: "SwiftyCompanion")
 
+    // Loads data controller for Core Data
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         AppDelegate.dataController.load()
         return true
@@ -43,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
     }
     
+    // Opens OAuth2 site in browser
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         guard let code = components.queryItems?.first(where: { $0.name == "code" })?.value else {
@@ -51,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return false
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "navigation") as! UINavigationController
         FortyTwoAPIClient.AuthenticationInfo.code = code
         FortyTwoAPIClient.getAccessToken { (success, error) in
             if !success {

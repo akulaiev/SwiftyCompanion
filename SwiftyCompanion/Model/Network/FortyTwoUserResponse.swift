@@ -256,7 +256,7 @@ struct Patroning: Codable {
 struct ProjectsUser: Codable {
     let id, occurrence: Int
     let finalMark: Int?
-    let status: Status
+    let status: String //Status
     let validated: Bool?
     let currentTeamID: Int?
     let project: Cursus

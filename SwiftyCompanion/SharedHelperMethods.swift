@@ -1,6 +1,6 @@
 //
 //  SharedHelperMethods.swift
-//  OnTheMap
+//  SwiftyCompanion
 //
 //  Created by Anna Koulaeva on 28.10.2019.
 //  Copyright © 2019 Anna Kulaieva. All rights reserved.
@@ -11,7 +11,7 @@ import UIKit
 
 class SharedHelperMethods {
     
-    //Shows error alerts
+    // Shows error alerts
     static func showFailureAlert(title: String, message: String, controller: UIViewController?) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -24,7 +24,7 @@ class SharedHelperMethods {
         }
     }
     
-    //Updates controllers' UI while requests are performed
+    // Updates controllers' UI while requests are performed
     static func updateUIState(isLoading: Bool, activityIndicator: UIActivityIndicatorView, textfieldOne: UITextField, textfieldTwo: UITextField, button: UIButton, buttonOptional: UIButton?) {
         if isLoading {
             activityIndicator.startAnimating()
@@ -40,6 +40,7 @@ class SharedHelperMethods {
         }
     }
     
+    // Checks saved token inspiery time stamp
     class func checkExpiredToken() -> Bool {
         let currentDateInterval = Int(Date().timeIntervalSince1970)
         if FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate > 0, currentDateInterval < FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate {
@@ -50,7 +51,8 @@ class SharedHelperMethods {
         }
     }
     
-    class func hexStringToUIColor (hex:String) -> UIColor {
+    // Casts string to UIColor
+    class func hexStringToUIColor (hex: String) -> UIColor {
         var cString: String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
