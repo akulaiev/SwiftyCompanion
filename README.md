@@ -17,11 +17,11 @@ Mobile client for school 42 intra 42 web-resource written in Swift language, usi
 </p>
 
 <p align="center">
-<img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic2.png" width="350">
+<img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic2.png" width="150">
 </p>
 
 <p align="right">
-<img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic3.png" width="350">
+<img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic3.png" width="150">
 </p>
 
 # Demo Video
