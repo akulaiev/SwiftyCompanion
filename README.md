@@ -12,15 +12,11 @@ Mobile client for school 42 intra 42 web-resource written in Swift language, usi
 
 • Information about followed users can be displayed offline and updated by request, when the user is back online
 
-<p align="left">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic1.png" width="150">
 
-<p align="center">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic2.png" width="150">
 
-<p align="right">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic3.png" width="150">
-</p>
 
 # Demo Video
 [Video Link](https://www.loom.com/share/99f716b9d83d462183172d7913485465)
