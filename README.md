@@ -14,11 +14,9 @@ Mobile client for school 42 intra 42 web-resource written in Swift language, usi
 
 <p align="left">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic1.png" width="150">
-</p>
 
 <p align="center">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic2.png" width="150">
-</p>
 
 <p align="right">
 <img src="https://github.com/akulaiev/SwiftyCompanion/blob/master/demoPic3.png" width="150">
@@ -31,4 +29,4 @@ Mobile client for school 42 intra 42 web-resource written in Swift language, usi
 Simply download or clone the project to open, build and run it in XCode.
 
 *Note*
-*Intra is a web-resource, that cam be used only by 42 school students.*
+*Intra is a web-resource, that can be used only by 42 school students.*
