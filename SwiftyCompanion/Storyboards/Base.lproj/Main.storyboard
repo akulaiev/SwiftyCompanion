@@ -104,18 +104,11 @@
                                                 <action selector="logoutButtonTapped:" destination="3gv-Ir-9pB" id="J0K-nq-ZlL"/>
                                             </connections>
                                         </barButtonItem>
-                                        <rightBarButtonItems>
-                                            <barButtonItem systemItem="search" id="1oc-LK-IK6">
-                                                <connections>
-                                                    <segue destination="Vnu-sH-BWC" kind="show" identifier="toSearch" id="n2X-zd-xaW"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem title="FOLLOWED USERS" id="USE-Gj-Sf9">
-                                                <connections>
-                                                    <segue destination="pr0-ID-zmi" kind="show" identifier="toFollowed" id="DHB-3f-wAC"/>
-                                                </connections>
-                                            </barButtonItem>
-                                        </rightBarButtonItems>
+                                        <barButtonItem key="rightBarButtonItem" title="FOLLOWED USERS" id="USE-Gj-Sf9">
+                                            <connections>
+                                                <segue destination="pr0-ID-zmi" kind="show" identifier="toFollowed" id="DHB-3f-wAC"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -394,7 +387,6 @@
                         <outlet property="logoutButton" destination="fYT-pD-5Oi" id="EXi-Wp-TWq"/>
                         <outlet property="rankLabel" destination="aOT-2n-aRR" id="dlA-HP-TGh"/>
                         <outlet property="refreshButton" destination="BhT-oi-BRR" id="tJr-2K-M5k"/>
-                        <outlet property="searchButton" destination="1oc-LK-IK6" id="4sS-ym-x1p"/>
                         <outlet property="userImageView" destination="5Rs-hF-Qnr" id="Meb-Zg-4Hc"/>
                         <outlet property="usernameLabel" destination="yIl-Pz-otP" id="x4c-c9-sZt"/>
                         <outlet property="walletLabel" destination="6Ka-UK-xsz" id="ep5-XO-Gen"/>
@@ -402,7 +394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAy-Db-D4r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721.73913043478262" y="18.75"/>
+            <point key="canvasLocation" x="1496" y="-256"/>
         </scene>
         <!--Followed Users View Controller-->
         <scene sceneID="GKH-Sb-1eA">
@@ -413,7 +405,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ezI-uo-U8I">
-                                <rect key="frame" x="15" y="103" width="384" height="725"/>
+                                <rect key="frame" x="15" y="103" width="384" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="followedUsersCell" id="OOa-YI-sy7" customClass="CustomTableViewCell" customModule="SwiftyCompanion" customModuleProvider="target">
@@ -456,12 +448,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Enter user login" translatesAutoresizingMaskIntoConstraints="NO" id="Vq7-3c-dQT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-NP-9if">
-                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="responsesCell" id="3ZA-v9-LhP">
@@ -474,6 +462,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Enter user login" translatesAutoresizingMaskIntoConstraints="NO" id="Vq7-3c-dQT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -488,14 +480,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="umH-hg-GuG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kzH-tg-DHb">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="UBc-tA-gPB">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="Vnu-sH-BWC" id="gom-ah-67R"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="FOLLOWED USERS" id="bOR-tx-ran">
+                            <connections>
+                                <segue destination="pr0-ID-zmi" kind="show" identifier="toFollowed1" id="mGn-bj-X8x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Vq7-3c-dQT" id="ej5-Ba-7kL"/>
                         <outlet property="tableView" destination="Mg7-NP-9if" id="l1k-VK-LFx"/>
+                        <segue destination="3gv-Ir-9pB" kind="show" identifier="toInfo" id="eMY-cG-DMA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jrQ-Qv-GaC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1495.6521739130435" y="-246.42857142857142"/>
+            <point key="canvasLocation" x="778" y="19"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="deX-a5-i5v">
@@ -506,7 +511,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="3gv-Ir-9pB" kind="relationship" relationship="rootViewController" id="Xxq-wi-cGR"/>
+                        <segue destination="Vnu-sH-BWC" kind="relationship" relationship="rootViewController" id="a3r-Lq-Jk3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woj-Z3-PJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -521,5 +526,8 @@
         <image name="greyTexture" width="1032.5" height="580.5"/>
         <image name="refresh" width="117.5" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mGn-bj-X8x"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

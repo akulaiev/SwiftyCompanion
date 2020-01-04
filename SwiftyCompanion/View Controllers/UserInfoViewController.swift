@@ -27,7 +27,6 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var followedUsersButton: UIBarButtonItem!
-    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var refreshButton: UIButton!
     
     var userId: String = ""
@@ -52,7 +51,6 @@ class UserInfoViewController: UIViewController {
         backgroundImageView.image = UIImage(named: "greyTexture")
         levelBar.tintColor = UIColor.darkGray
         logoutButton.tintColor = UIColor.darkGray
-        searchButton.tintColor = UIColor.darkGray
         followedUsersButton.tintColor = UIColor.darkGray
         followButton.setImage(UIImage(named: "follow"), for: UIControl.State.normal)
         followButton.isHidden = true
@@ -124,7 +122,6 @@ class UserInfoViewController: UIViewController {
         levelBar.progressTintColor = SharedHelperMethods.hexStringToUIColor(hex: userData.color)
         logoutButton.tintColor = levelBar.progressTintColor
         followedUsersButton.tintColor = levelBar.progressTintColor
-        searchButton.tintColor = levelBar.progressTintColor
     }
 
     fileprivate func setUserData(_ coalition: CoalitionsResponse, user: UserResponse) {
@@ -199,13 +196,7 @@ class UserInfoViewController: UIViewController {
     }
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
-        FortyTwoAPIClient.AuthenticationInfo.token = ""
-        FortyTwoAPIClient.AuthenticationInfo.refreshToken = ""
-        FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate = 0
-        UserDefaults.standard.removeObject(forKey: "accessToken")
-        UserDefaults.standard.removeObject(forKey: "refreshToken")
-        UserDefaults.standard.removeObject(forKey: "expieryDate")
-        self.dismiss(animated: true, completion: nil)
+        SharedHelperMethods.logoutLogic(currentVC: self)
     }
 }
 

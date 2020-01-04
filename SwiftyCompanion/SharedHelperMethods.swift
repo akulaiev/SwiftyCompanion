@@ -69,4 +69,15 @@ class SharedHelperMethods {
             alpha: CGFloat(1.0)
         )
     }
+    
+    // Logout logic
+    class func logoutLogic(currentVC: UIViewController) {
+        FortyTwoAPIClient.AuthenticationInfo.token = ""
+        FortyTwoAPIClient.AuthenticationInfo.refreshToken = ""
+        FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate = 0
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.removeObject(forKey: "refreshToken")
+        UserDefaults.standard.removeObject(forKey: "expieryDate")
+        currentVC.dismiss(animated: true, completion: nil)
+    }
 }

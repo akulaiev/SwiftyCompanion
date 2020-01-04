@@ -75,10 +75,19 @@ class FollowedUsersViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = self.navigationController?.viewControllers.first as! UserInfoViewController
-        vc.userId = fetchedResultsController.object(at: indexPath).userId ?? ""
-        self.navigationController?.popToRootViewController(animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
+        var vc: UserInfoViewController!
+        for controller in self.navigationController!.viewControllers {
+            if controller is UserInfoViewController {
+                vc = (controller as! UserInfoViewController)
+                vc.userId = fetchedResultsController.object(at: indexPath).userId ?? ""
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
+        }
+        if vc == nil {
+            vc = (storyboard?.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController)
+            vc.userId = fetchedResultsController.object(at: indexPath).userId ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // Deletes the `Note` at the specified index path

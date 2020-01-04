@@ -57,6 +57,10 @@ extension SearchViewController: UISearchBarDelegate {
         tableView.reloadData()
         searchBar.endEditing(true)
     }
+    
+    @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
+        SharedHelperMethods.logoutLogic(currentVC: self)
+    }
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
@@ -78,9 +82,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
-        let vc = self.navigationController?.viewControllers.first as! UserInfoViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "userInfo") as! UserInfoViewController
         vc.userId = String(responses[selectedIndex].id)
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
