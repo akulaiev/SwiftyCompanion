@@ -28,6 +28,8 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var followedUsersButton: UIBarButtonItem!
     @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var skillsButton: UIButton!
+    @IBOutlet weak var projectsButton: UIButton!
     
     var userId: String = ""
     var dataController: DataController = AppDelegate.dataController
@@ -36,6 +38,8 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        skillsButton.layer.cornerRadius = 5
+        projectsButton.layer.cornerRadius = 5
     }
     
     fileprivate func reloadViewContents() {

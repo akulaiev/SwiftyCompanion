@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DBE212D23C3780700ABA5E3 /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */; };
 		2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */; };
 		2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */; };
 		2DDF9A53239983DE008570CA /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A52239983DE008570CA /* DataController.swift */; };
 		2DDF9A5523999F1B008570CA /* FollowedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */; };
+		89AEE11E62C9846F40B58ACB /* libPods-SwiftyCompanion.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AADF8B999688C75CDFE7DD29 /* libPods-SwiftyCompanion.a */; };
 		A0FF7FDB238D246C00DC7968 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */; };
 		A0FF7FE0238D246C00DC7968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0FF7FDE238D246C00DC7968 /* Main.storyboard */; };
 		A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0FF7FE1238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld */; };
@@ -30,10 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		224F8CC78D7E91724F74A8D6 /* Pods-SwiftyCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoRequestStructs.swift; sourceTree = "<group>"; };
 		2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoTokenResponse.swift; sourceTree = "<group>"; };
 		2DDF9A52239983DE008570CA /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowedUsersViewController.swift; sourceTree = "<group>"; };
+		69FA709E11407C9A5AFDA618 /* Pods-SwiftyCompanion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.release.xcconfig"; path = "Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.release.xcconfig"; sourceTree = "<group>"; };
 		A0FF7FD7238D246C00DC7968 /* SwiftyCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0FF7FDA238D246C00DC7968 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0FF7FDF238D246C00DC7968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 		A0FF80072395AF2100DC7968 /* FortyTwoCoalitionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoCoalitionsResponse.swift; sourceTree = "<group>"; };
 		A0FF80092396BE2000DC7968 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A0FF800B2398266200DC7968 /* FortyTwoSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoSearchResponse.swift; sourceTree = "<group>"; };
+		AADF8B999688C75CDFE7DD29 /* libPods-SwiftyCompanion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftyCompanion.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +65,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89AEE11E62C9846F40B58ACB /* libPods-SwiftyCompanion.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B5CE131C2E268CB71C16ABF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				224F8CC78D7E91724F74A8D6 /* Pods-SwiftyCompanion.debug.xcconfig */,
+				69FA709E11407C9A5AFDA618 /* Pods-SwiftyCompanion.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2DDF9A4F23946B1E008570CA /* Local Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +93,8 @@
 			children = (
 				A0FF7FD9238D246C00DC7968 /* SwiftyCompanion */,
 				A0FF7FD8238D246C00DC7968 /* Products */,
+				1B5CE131C2E268CB71C16ABF /* Pods */,
+				E5A49C818DCA3D90B9B2BEBC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +146,7 @@
 				A0FF7FF7238D44B500DC7968 /* AuthenticationViewController.swift */,
 				A0FF800123906D6300DC7968 /* UserInfoViewController.swift */,
 				2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */,
+				2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -165,6 +184,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E5A49C818DCA3D90B9B2BEBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AADF8B999688C75CDFE7DD29 /* libPods-SwiftyCompanion.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0FF7FEC238D246D00DC7968 /* Build configuration list for PBXNativeTarget "SwiftyCompanion" */;
 			buildPhases = (
+				BA40FFD74F4592D46C7D523A /* [CP] Check Pods Manifest.lock */,
 				A0FF7FD3238D246C00DC7968 /* Sources */,
 				A0FF7FD4238D246C00DC7968 /* Frameworks */,
 				A0FF7FD5238D246C00DC7968 /* Resources */,
@@ -232,6 +260,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BA40FFD74F4592D46C7D523A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftyCompanion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A0FF7FD3238D246C00DC7968 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -252,6 +305,7 @@
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */,
+				2DBE212D23C3780700ABA5E3 /* SkillsViewController.swift in Sources */,
 				A0FF7FFA238D44FF00DC7968 /* FortyTwoAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +450,7 @@
 		};
 		A0FF7FED238D246D00DC7968 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 224F8CC78D7E91724F74A8D6 /* Pods-SwiftyCompanion.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -416,6 +471,7 @@
 		};
 		A0FF7FEE238D246D00DC7968 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69FA709E11407C9A5AFDA618 /* Pods-SwiftyCompanion.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

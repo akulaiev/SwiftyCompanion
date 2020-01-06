@@ -40,7 +40,7 @@ class SharedHelperMethods {
         }
     }
     
-    // Checks saved token inspiery time stamp
+    // Checks saved token ex spiery time stamp
     class func checkExpiredToken() -> Bool {
         let currentDateInterval = Int(Date().timeIntervalSince1970)
         if FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate > 0, currentDateInterval < FortyTwoAPIClient.AuthenticationInfo.tokenExpieryDate {
