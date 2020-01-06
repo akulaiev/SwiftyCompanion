@@ -1,5 +1,5 @@
 # SwiftyCompanion
-Mobile client for school 42 intra 42 web-resource written in Swift language, using Core Data for data persistence and 42 API for networking.
+Mobile client for school 42 intra web-resource written in Swift language, using Core Data for data persistence and 42 API for networking.
 
 # Project features
 • OAuth2 for authorization with refresh token support
@@ -26,5 +26,4 @@ Mobile client for school 42 intra 42 web-resource written in Swift language, usi
 # Running
 Simply download or clone the project to open, build and run it in XCode.
 
-*Note*
-*Intra is a web-resource, that can be used only by 42 school students.*
+*Note: Intra is a web-resource, that can be used only by 42 school students.*
