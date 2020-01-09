@@ -258,42 +258,42 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-8x-AeE">
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="kmW-8x-AeE">
                                                 <rect key="frame" x="0.0" y="207" width="123" height="41.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNv-Gw-pu7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="41.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="41.5"/>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VN1-hT-Yi6">
-                                                        <rect key="frame" x="41" y="5.5" width="41" height="30"/>
+                                                        <rect key="frame" x="36" y="5.5" width="51" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Show">
                                                             <color key="titleColor" red="0.58038812875747681" green="0.58038830757141113" blue="0.58038729429244995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="87e-Hp-2Wl" kind="show" id="JdB-Ey-NAw"/>
+                                                            <segue destination="87e-Hp-2Wl" kind="show" identifier="toSkills" id="JdB-Ey-NAw"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u0W-V0-ZWr">
-                                                        <rect key="frame" x="82" y="0.0" width="41" height="41.5"/>
+                                                        <rect key="frame" x="72" y="0.0" width="51" height="41.5"/>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wfu-mH-llU">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="wfu-mH-llU">
                                                 <rect key="frame" x="0.0" y="248.5" width="123" height="41.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqF-mF-TsO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="41.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="51" height="41.5"/>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5D-pz-uXL">
-                                                        <rect key="frame" x="41" y="5.5" width="41" height="30"/>
+                                                        <rect key="frame" x="36" y="5.5" width="51" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Show">
                                                             <color key="titleColor" red="0.58038812880000001" green="0.58038830760000004" blue="0.58038729430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </state>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e68-jv-bum">
-                                                        <rect key="frame" x="82" y="0.0" width="41" height="41.5"/>
+                                                        <rect key="frame" x="72" y="0.0" width="51" height="41.5"/>
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
@@ -482,7 +482,7 @@
                         <viewLayoutGuide key="safeArea" id="IYE-i9-plF"/>
                     </view>
                     <connections>
-                        <outlet property="radarChartView" destination="4C0-ck-3uw" id="buc-Gb-Hp8"/>
+                        <outlet property="radarChartView" destination="4C0-ck-3uw" id="3bx-cT-3QJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0A-eb-JrS" userLabel="First Responder" sceneMemberID="firstResponder"/>

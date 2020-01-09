@@ -80,7 +80,7 @@ class UserInfoViewController: UIViewController {
             followedUser = followedUserData
             followButton.isHidden = false
             followButton.isEnabled = true
-            userData = UserData(backgroundImage: followedUserData.backgroundImage ?? nil, city: followedUserData.city ?? "-", coalition: followedUserData.coalition ?? "-", color: followedUserData.color ?? "#ffffff", correctionPoints: followedUserData.correctionPoints ?? "0", displayName: followedUserData.displayName ?? "-", grade: followedUserData.grade ?? "-", level: followedUserData.level, login: followedUserData.login ?? "-", userId: followedUserData.userId ?? "", userImage: followedUserData.userImage ?? nil, wallet: followedUserData.wallet ?? "-")
+            userData = UserData(backgroundImage: followedUserData.backgroundImage ?? nil, city: followedUserData.city ?? "-", coalition: followedUserData.coalition ?? "-", color: followedUserData.color ?? "#ffffff", correctionPoints: followedUserData.correctionPoints ?? "0", displayName: followedUserData.displayName ?? "-", grade: followedUserData.grade ?? "-", level: followedUserData.level, login: followedUserData.login ?? "-", userId: followedUserData.userId ?? "", userImage: followedUserData.userImage ?? nil, wallet: followedUserData.wallet ?? "-", skillNames: followedUserData.skillNames ?? [], skillLevels: followedUserData.skillLevels ?? [])
             followButton.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
             userImageView.image = UIImage(data: userData.userImage!)
             backgroundImageView.image = UIImage(data: userData.backgroundImage!)
@@ -129,7 +129,15 @@ class UserInfoViewController: UIViewController {
     }
 
     fileprivate func setUserData(_ coalition: CoalitionsResponse, user: UserResponse) {
-        self.userData = UserData(backgroundImage: (self.backgroundImageView.image?.pngData()) ?? nil, city: "-", coalition: "-", color: "#ffffff", correctionPoints: String(user.correctionPoint), displayName: user.displayname, grade: "-", level: 0, login: user.login, userId: String(user.id), userImage: (self.userImageView.image?.pngData()) ?? nil, wallet: String(user.wallet))
+        var skillNames: [String] = []
+        var skillLevels: [Double] = []
+        if user.cursusUsers.count > 0, user.cursusUsers[0].cursus.name == "42" {
+            for skill in user.cursusUsers[0].skills {
+                skillNames.append(skill.name)
+                skillLevels.append(skill.level)
+            }
+        }
+        self.userData = UserData(backgroundImage: (self.backgroundImageView.image?.pngData()) ?? nil, city: "-", coalition: "-", color: "#ffffff", correctionPoints: String(user.correctionPoint), displayName: user.displayname, grade: "-", level: 0, login: user.login, userId: String(user.id), userImage: (self.userImageView.image?.pngData()) ?? nil, wallet: String(user.wallet), skillNames: skillNames, skillLevels: skillLevels)
         if user.campus.count > 0 {
             self.userData.city = user.campus[0].country + ", " + user.campus[0].city
         }
@@ -178,6 +186,8 @@ class UserInfoViewController: UIViewController {
             newUser.level = userData.level
             newUser.login = userData.login
             newUser.wallet = userData.wallet
+            newUser.skillLevels = userData.skillLevels
+            newUser.skillNames = userData.skillNames
             dataController.saveContext()
             SharedHelperMethods.showFailureAlert(title: "Followed!", message: "", controller: self)
             sender.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
@@ -202,6 +212,17 @@ class UserInfoViewController: UIViewController {
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
         SharedHelperMethods.logoutLogic(currentVC: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSkills" {
+            let skillsVC = segue.destination as! SkillsViewController
+            var skills: [String : Double] = [:]
+            for i in 0..<userData.skillNames.count {
+                skills[userData.skillNames[i]] = userData.skillLevels[i]
+            }
+            skillsVC.skills = skills
+        }
+    }
 }
 
 // Struct with displayed user info
@@ -219,8 +240,10 @@ struct UserData {
     var login: String
     var userId: String
     var wallet: String
+    var skillNames: [String]
+    var skillLevels: [Double]
     
-    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String) {
+    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String, skillNames: [String], skillLevels: [Double]) {
         if let backgroundImage = backgroundImage, let userImage = userImage {
             self.backgroundImage = backgroundImage
             self.userImage = userImage
@@ -239,5 +262,7 @@ struct UserData {
         self.login = login
         self.userId = userId
         self.wallet = wallet
+        self.skillNames = skillNames
+        self.skillLevels = skillLevels
     }
 }

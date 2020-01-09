@@ -18,7 +18,7 @@ struct UserResponse: Codable {
     let staff: Bool
     let correctionPoint: Int
     let poolMonth, poolYear: String
-    let location: JSONNull?
+    let location: String?
     let wallet: Int
     let groups: [JSONAny]
     let cursusUsers: [CursusUser]
@@ -87,6 +87,7 @@ enum Kind: String, Codable {
 enum Tier: String, Codable {
     case easy = "easy"
     case medium = "medium"
+    case hard = "hard"
     case none = "none"
 }
 

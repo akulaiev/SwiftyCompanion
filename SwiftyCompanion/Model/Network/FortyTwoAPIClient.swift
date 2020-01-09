@@ -57,6 +57,7 @@ class FortyTwoAPIClient {
     }
     
     class func getUserInfo(userId: String, completion: @escaping (UserResponse?, Error?) -> Void) {
+        print(userId)
         let emptyBody: String? = nil
         var urlStr = ""
         if userId.isEmpty {
