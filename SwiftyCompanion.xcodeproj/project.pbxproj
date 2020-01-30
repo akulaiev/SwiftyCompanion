@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D01FD0D23E3435500B5C0A4 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D01FD0C23E3435500B5C0A4 /* ProjectsViewController.swift */; };
 		2DBE212D23C3780700ABA5E3 /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */; };
 		2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */; };
 		2DDF9A4D238EDC11008570CA /* FortyTwoTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		224F8CC78D7E91724F74A8D6 /* Pods-SwiftyCompanion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyCompanion.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyCompanion/Pods-SwiftyCompanion.debug.xcconfig"; sourceTree = "<group>"; };
+		2D01FD0C23E3435500B5C0A4 /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
 		2DDF9A4A238ECBEB008570CA /* FortyTwoRequestStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoRequestStructs.swift; sourceTree = "<group>"; };
 		2DDF9A4C238EDC11008570CA /* FortyTwoTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FortyTwoTokenResponse.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				A0FF800123906D6300DC7968 /* UserInfoViewController.swift */,
 				2DDF9A5423999F1B008570CA /* FollowedUsersViewController.swift */,
 				2DBE212C23C3780700ABA5E3 /* SkillsViewController.swift */,
+				2D01FD0C23E3435500B5C0A4 /* ProjectsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				A0FF800A2396BE2000DC7968 /* SearchViewController.swift in Sources */,
 				2DDF9A53239983DE008570CA /* DataController.swift in Sources */,
 				2DDF9A5523999F1B008570CA /* FollowedUsersViewController.swift in Sources */,
+				2D01FD0D23E3435500B5C0A4 /* ProjectsViewController.swift in Sources */,
 				2DDF9A4B238ECBEB008570CA /* FortyTwoRequestStructs.swift in Sources */,
 				A0FF7FF6238D257E00DC7968 /* NetworkingTasks.swift in Sources */,
 				A0FF7FE3238D246C00DC7968 /* SwiftyCompanion.xcdatamodeld in Sources */,

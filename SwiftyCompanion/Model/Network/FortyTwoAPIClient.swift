@@ -138,6 +138,7 @@ class FortyTwoAPIClient {
     
     class func search(query: String, completion: @escaping (SearchResponse, Error?) -> Void) -> URLSessionTask {
         let emptyBody: String? = nil
+        print(AuthenticationInfo.token)
         let url = URL(string: Endpoints.search.stringValue + "?range[login]=" + query.lowercased() + "," + getMaxValue(minValue: query))!
         let task = NetworkingTasks.taskForRequest(authRequest: false, requestMethod: "GET", url: url, responseType: SearchResponse.self, body: emptyBody) { (response, error) in
             if let response = response {
