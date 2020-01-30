@@ -221,6 +221,7 @@ class UserInfoViewController: UIViewController {
                 skills[userData.skillNames[i]] = userData.skillLevels[i]
             }
             skillsVC.skills = skills
+            skillsVC.color = userData.color
         }
     }
 }

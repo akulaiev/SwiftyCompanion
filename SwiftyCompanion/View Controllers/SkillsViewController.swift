@@ -16,6 +16,7 @@ class SkillsViewController: UIViewController {
     var skills: [String : Double] = [:]
     let allSkillNames = ["Adaptation & creativity", "Algorithms & AI", "Company experience", "DB & Data", "Functional programming", "Graphics", "Group & interpersonal", "Imperative programming", "Network & system administration", "Object-oriented programming", "Organization", "Parallel computing", "Rigor", "Security", "Technology integration", "Unix", "Web"]
     var allSkills: [String : Double] = [:]
+    var color: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ class SkillsViewController: UIViewController {
             }
         }
         let chartDataSet = RadarChartDataSet(entries: dataEntries, label: "Skills")
+        chartDataSet.colors = [SharedHelperMethods.hexStringToUIColor(hex: color)]
+        chartDataSet.fillColor = SharedHelperMethods.hexStringToUIColor(hex: color)
+        chartDataSet.drawFilledEnabled = true
         let chartData = RadarChartData(dataSet: chartDataSet)
         radarChartView.data = chartData
     }
