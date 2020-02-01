@@ -159,6 +159,7 @@ class UserInfoViewController: UIViewController {
                 SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
                 return
             }
+            print(user.projectsUsers)
             FortyTwoAPIClient.getCoalitionsInfo(userID: String(user.id)) { (response, error) in
                 guard let coalition = response else {
                     SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
@@ -188,6 +189,8 @@ class UserInfoViewController: UIViewController {
             newUser.wallet = userData.wallet
             newUser.skillLevels = userData.skillLevels
             newUser.skillNames = userData.skillNames
+            newUser.projectNames = userData.projectNames
+            newUser.projectStatus = userData.projectStatus
             dataController.saveContext()
             SharedHelperMethods.showFailureAlert(title: "Followed!", message: "", controller: self)
             sender.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
@@ -243,8 +246,10 @@ struct UserData {
     var wallet: String
     var skillNames: [String]
     var skillLevels: [Double]
+    var projectNames: [String]
+    var projectStatus: [String]
     
-    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String, skillNames: [String], skillLevels: [Double]) {
+    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String, skillNames: [String], skillLevels: [Double], projectNames: [String], projectStatus: [String]) {
         if let backgroundImage = backgroundImage, let userImage = userImage {
             self.backgroundImage = backgroundImage
             self.userImage = userImage
@@ -265,5 +270,7 @@ struct UserData {
         self.wallet = wallet
         self.skillNames = skillNames
         self.skillLevels = skillLevels
+        self.projectNames = projectNames
+        self.projectStatus = projectStatus
     }
 }
