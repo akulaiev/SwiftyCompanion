@@ -80,7 +80,7 @@ class UserInfoViewController: UIViewController {
             followedUser = followedUserData
             followButton.isHidden = false
             followButton.isEnabled = true
-            userData = UserData(backgroundImage: followedUserData.backgroundImage ?? nil, city: followedUserData.city ?? "-", coalition: followedUserData.coalition ?? "-", color: followedUserData.color ?? "#ffffff", correctionPoints: followedUserData.correctionPoints ?? "0", displayName: followedUserData.displayName ?? "-", grade: followedUserData.grade ?? "-", level: followedUserData.level, login: followedUserData.login ?? "-", userId: followedUserData.userId ?? "", userImage: followedUserData.userImage ?? nil, wallet: followedUserData.wallet ?? "-", skillNames: followedUserData.skillNames ?? [], skillLevels: followedUserData.skillLevels ?? [])
+            userData = UserData(backgroundImage: followedUserData.backgroundImage ?? nil, city: followedUserData.city ?? "-", coalition: followedUserData.coalition ?? "-", color: followedUserData.color ?? "#ffffff", correctionPoints: followedUserData.correctionPoints ?? "0", displayName: followedUserData.displayName ?? "-", grade: followedUserData.grade ?? "-", level: followedUserData.level, login: followedUserData.login ?? "-", userId: followedUserData.userId ?? "", userImage: followedUserData.userImage ?? nil, wallet: followedUserData.wallet ?? "-", skillNames: followedUserData.skillNames ?? [], skillLevels: followedUserData.skillLevels ?? [], projectNames: followedUserData.projectNames ?? [], projectStatus: followedUserData.projectStatus ?? [], projectsValidated: followedUserData.projectsValidated ?? [])
             followButton.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
             userImageView.image = UIImage(data: userData.userImage!)
             backgroundImageView.image = UIImage(data: userData.backgroundImage!)
@@ -131,19 +131,33 @@ class UserInfoViewController: UIViewController {
     fileprivate func setUserData(_ coalition: CoalitionsResponse, user: UserResponse) {
         var skillNames: [String] = []
         var skillLevels: [Double] = []
-        if user.cursusUsers.count > 0, user.cursusUsers[0].cursus.name == "42" {
-            for skill in user.cursusUsers[0].skills {
-                skillNames.append(skill.name)
-                skillLevels.append(skill.level)
-            }
+        var projectNames: [String] = []
+        var projectStatus: [String] = []
+        var projectsValidated: [Bool] = []
+        for project in user.projectsUsers {
+            let projectName = project.project.slug.replacingOccurrences(of: "-", with: " ")
+            let nameCap = projectName.capitalized
+            projectNames.append(nameCap)
+            projectStatus.append(project.status)
+            projectsValidated.append(project.validated ?? false)
         }
-        self.userData = UserData(backgroundImage: (self.backgroundImageView.image?.pngData()) ?? nil, city: "-", coalition: "-", color: "#ffffff", correctionPoints: String(user.correctionPoint), displayName: user.displayname, grade: "-", level: 0, login: user.login, userId: String(user.id), userImage: (self.userImageView.image?.pngData()) ?? nil, wallet: String(user.wallet), skillNames: skillNames, skillLevels: skillLevels)
+        self.userData = UserData(backgroundImage: (self.backgroundImageView.image?.pngData()) ?? nil, city: "-", coalition: "-", color: "#ffffff", correctionPoints: String(user.correctionPoint), displayName: user.displayname, grade: "-", level: 0, login: user.login, userId: String(user.id), userImage: (self.userImageView.image?.pngData()) ?? nil, wallet: String(user.wallet), skillNames: [], skillLevels: [], projectNames: projectNames, projectStatus: projectStatus, projectsValidated: projectsValidated)
         if user.campus.count > 0 {
             self.userData.city = user.campus[0].country + ", " + user.campus[0].city
         }
         if user.cursusUsers.count > 0 {
-            self.userData.grade = user.cursusUsers[0].grade ?? "-"
-            self.userData.level = Float(user.cursusUsers[0].level)
+            var cursusNum = 0
+            while user.cursusUsers[cursusNum].cursus.name != "42", cursusNum < user.cursusUsers.count {
+                cursusNum += 1
+            }
+            self.userData.grade = user.cursusUsers[cursusNum].grade ?? "-"
+            self.userData.level = Float(user.cursusUsers[cursusNum].level)
+            for skill in user.cursusUsers[cursusNum].skills {
+                skillNames.append(skill.name)
+                skillLevels.append(skill.level)
+            }
+            self.userData.skillNames = skillNames
+            self.userData.skillLevels = skillLevels
         }
         if coalition.count > 0, let coverURL = coalition[0].coverURL {
             self.setImages(url: URL(string: coverURL)!, imageView: self.backgroundImageView, indicator: nil)
@@ -159,7 +173,6 @@ class UserInfoViewController: UIViewController {
                 SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
                 return
             }
-            print(user.projectsUsers)
             FortyTwoAPIClient.getCoalitionsInfo(userID: String(user.id)) { (response, error) in
                 guard let coalition = response else {
                     SharedHelperMethods.showFailureAlert(title: "An error has occured", message: error!.localizedDescription, controller: self)
@@ -226,6 +239,12 @@ class UserInfoViewController: UIViewController {
             skillsVC.skills = skills
             skillsVC.color = userData.color
         }
+        else if segue.identifier == "toProjects" {
+            let projectsVC = segue.destination as! ProjectsViewController
+            projectsVC.projectNames = userData.projectNames
+            projectsVC.projectStatus = userData.projectStatus
+            projectsVC.projectsValidated = userData.projectsValidated
+        }
     }
 }
 
@@ -248,8 +267,9 @@ struct UserData {
     var skillLevels: [Double]
     var projectNames: [String]
     var projectStatus: [String]
+    var projectsValidated: [Bool]
     
-    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String, skillNames: [String], skillLevels: [Double], projectNames: [String], projectStatus: [String]) {
+    init(backgroundImage: Data?, city: String, coalition: String, color: String, correctionPoints: String, displayName: String, grade: String, level: Float, login: String, userId: String, userImage: Data?, wallet: String, skillNames: [String], skillLevels: [Double], projectNames: [String], projectStatus: [String], projectsValidated: [Bool]) {
         if let backgroundImage = backgroundImage, let userImage = userImage {
             self.backgroundImage = backgroundImage
             self.userImage = userImage
@@ -272,5 +292,6 @@ struct UserData {
         self.skillLevels = skillLevels
         self.projectNames = projectNames
         self.projectStatus = projectStatus
+        self.projectsValidated = projectsValidated
     }
 }
