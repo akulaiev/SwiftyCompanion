@@ -17,7 +17,6 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +26,20 @@ class ProjectsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = projectsTableView.dequeueReusableCell(withIdentifier: "projectCell")!
         cell.textLabel?.text = projectNames[indexPath.row]
+        if projectStatus[indexPath.row] == "in_progress" {
+            cell.detailTextLabel?.textColor = UIColor.yellow
+            cell.detailTextLabel?.text = "In progress"
+        }
+        else {
+            if (projectsValidated[indexPath.row]) {
+                cell.detailTextLabel?.textColor = UIColor.green
+                cell.detailTextLabel?.text = "Finished"
+            }
+            else {
+                cell.detailTextLabel?.textColor = UIColor.red
+                cell.detailTextLabel?.text = "Failed"
+            }
+        }
         return cell
     }
 

@@ -649,6 +649,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="1ZV-Lf-aqQ" id="EgM-N2-lRd"/>
+                                    <outlet property="delegate" destination="1ZV-Lf-aqQ" id="Oe7-vR-2tc"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -69,6 +69,8 @@ class UserInfoViewController: UIViewController {
         super.viewWillAppear(true)
         followButton.isEnabled = false
         followButton.isHidden = true
+        projectsButton.isEnabled = false
+        skillsButton.isEnabled = false
         if userId.isEmpty {
             getUserData()
         }
@@ -80,6 +82,8 @@ class UserInfoViewController: UIViewController {
             followedUser = followedUserData
             followButton.isHidden = false
             followButton.isEnabled = true
+            projectsButton.isEnabled = true
+            skillsButton.isEnabled = true
             userData = UserData(backgroundImage: followedUserData.backgroundImage ?? nil, city: followedUserData.city ?? "-", coalition: followedUserData.coalition ?? "-", color: followedUserData.color ?? "#ffffff", correctionPoints: followedUserData.correctionPoints ?? "0", displayName: followedUserData.displayName ?? "-", grade: followedUserData.grade ?? "-", level: followedUserData.level, login: followedUserData.login ?? "-", userId: followedUserData.userId ?? "", userImage: followedUserData.userImage ?? nil, wallet: followedUserData.wallet ?? "-", skillNames: followedUserData.skillNames ?? [], skillLevels: followedUserData.skillLevels ?? [], projectNames: followedUserData.projectNames ?? [], projectStatus: followedUserData.projectStatus ?? [], projectsValidated: followedUserData.projectsValidated ?? [])
             followButton.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
             userImageView.image = UIImage(data: userData.userImage!)
@@ -110,6 +114,8 @@ class UserInfoViewController: UIViewController {
             if !self.userId.isEmpty {
                 self.followButton.isEnabled = true
                 self.followButton.isHidden = false
+                self.projectsButton.isEnabled = true
+                self.skillsButton.isEnabled = true
             }
         }
     }
@@ -147,7 +153,7 @@ class UserInfoViewController: UIViewController {
         }
         if user.cursusUsers.count > 0 {
             var cursusNum = 0
-            while user.cursusUsers[cursusNum].cursus.name != "42", cursusNum < user.cursusUsers.count {
+            while cursusNum < user.cursusUsers.count - 1, user.cursusUsers[cursusNum].cursus.name != "42" {
                 cursusNum += 1
             }
             self.userData.grade = user.cursusUsers[cursusNum].grade ?? "-"
@@ -159,8 +165,8 @@ class UserInfoViewController: UIViewController {
             self.userData.skillNames = skillNames
             self.userData.skillLevels = skillLevels
         }
-        if coalition.count > 0, let coverURL = coalition[0].coverURL {
-            self.setImages(url: URL(string: coverURL)!, imageView: self.backgroundImageView, indicator: nil)
+        if coalition.count > 0, let coverStr = coalition[0].coverURL, let coverURL = URL(string: coverStr) {
+            self.setImages(url: coverURL, imageView: self.backgroundImageView, indicator: nil)
             self.userData.coalition = coalition[0].name
             self.userData.color = coalition[0].color
         }
@@ -204,6 +210,7 @@ class UserInfoViewController: UIViewController {
             newUser.skillNames = userData.skillNames
             newUser.projectNames = userData.projectNames
             newUser.projectStatus = userData.projectStatus
+            newUser.projectsValidated = userData.projectsValidated
             dataController.saveContext()
             SharedHelperMethods.showFailureAlert(title: "Followed!", message: "", controller: self)
             sender.setImage(UIImage(named: "unfollow"), for: UIControl.State.normal)
